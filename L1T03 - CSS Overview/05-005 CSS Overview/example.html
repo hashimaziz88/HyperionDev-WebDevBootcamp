@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Subject Page</title>
+    <meta charset="utf-8" />
+    <!--
+      First, open this page in the browser to see how it is rendered without the internal CSS below.
+      Then, uncomment the style section below to see the effect of the CSS.
+
+      Notice that all the selectors in the CSS below refer to <a> elements.
+
+      For more information about cascade and inheritance in CSS, 
+      Please refer to: https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance 
+    -->
+
+    <style type="text/css">
+      /* 
+        The first rule is the least specific because it applies to all <a> elements on this page. 
+        All <a> elements on this page are therefore made red.
+          
+        'a' is the element selector
+        
+        Inside the parenthesis, the collection of property:value pairs is what we call a 'declaration'.
+
+        These two together make up the CSS syntax.
+      */
+      a {
+        color: red;
+        font-weight: lighter;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+      } 
+      /* 
+        The class selector (.moreButton) below is more specific than the element selector above, so the rule
+        'font-weight:lighter' is overwritten by the rule 'font-weight: bold', for all <a> elements
+        that have a class attribute with the value "moreButton". 
+      */
+      .moreButton {
+        font-weight: bold;
+      }
+
+      /* 
+         The 'ID' selector is more specific than the 'class' selector so the rule 'font-weight: bolder' 
+         overwrites the rule 'font-weight: bold;'.
+      */
+      #firstmorebutton {
+        font-weight: bolder;
+        font-family: cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="mainheading">Subject Page</h1>
+    </header>
+
+    <!-- 
+      As you can see, we are making changes to the img element by adding values for 
+      the height, width, source, and alternate text attributes. 
+    -->
+    <img id="mainpic" src="images/classroom.png" alt="desk" height="200" width="auto" />
+    <nav id="mainnav">
+      <ul class="listlinks">
+        <li><a href="#art0">Home</a></li>
+        <li><a href="#art1">IT</a></li>
+        <li><a href="#art2">Biology</a></li>
+        <li><a href="#art3">History</a></li>
+        <li><a href="#art4">Contact</a></li>
+      </ul>
+    </nav>
+    <section>
+      <article id="art0">
+        <img src="images/home.jpg" class="articlepics" alt="home" />
+        <h2 class="articleheadings">Home</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- 
+          One of the <a> elements that has the class attribute "moreButton" also has an ID of 
+          "firstMoreButton". As mentioned before, the 'ID' selector is more specific than the 'class' selector 
+          so the rule 'font-weight: bolder' overwrites the rule 'font-weight: bold;'.
+         -->
+        <a href="" class="morebutton" id="firstmorebutton">more</a>
+      </article>
+      <article id="art1">
+        <img src="images/itpic.jpg" class="articlepics" alt="informationtechnology" />
+        <h2 class="articleheadings">Information Technology</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- 
+          One of the <a> elements that has the class attribute "moreButton" also has an ID of 
+          "firstMoreButton". As mentioned before, the 'ID' selector is more specific than the 'class' selector 
+          so the rule 'font-weight: bolder' overwrites the rule 'font-weight: bold;'.
+         -->
+        <a href="" class="morebutton" id="firstmorebutton">more</a>
+      </article>
+      <article id="art2">
+        <img src="images/biology.jpg" class="articlepics" alt="biology" />
+        <h2 class="articleheadings">Biology</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="" class="morebutton">more</a>
+      </article>
+      <article id="art3">
+        <img src="images/history.jpg" class="articlepics" alt="history" />
+        <h2 class="articleheadings">History</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="" class="morebutton">more</a>
+      </article>
+      <article id="art4">
+        <img src="images/contact.png" class="articlepics" alt="contact" />
+        <h2 class="articleheadings">Contact</h2>
+        <form action="#" method="post">
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" required><br><br>
+  
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required><br><br>
+  
+          <label for="subject">Subject:</label><br>
+          <input type="text" id="subject" name="subject" required><br><br>
+  
+          <label for="message">Message:</label><br>
+          <textarea id="message" name="message" rows="4" required></textarea><br><br>
+  
+          <input type="button" value="Submit">
+        </form>
+        <a href="" class="morebutton">more</a>
+      </article>
+    </section>
+    <footer>
+      <p>
+        &copy; Hyperion development.&nbsp;&nbsp; All rights
+        reserved.&nbsp;&nbsp; Proudly created by
+        <a href="http://www.hyperiondev.com">Hyperion development</a>
+      </p>
+      <p>Last updated: 28 July 2023</p>
+    </footer>
+  </body>
+</html>

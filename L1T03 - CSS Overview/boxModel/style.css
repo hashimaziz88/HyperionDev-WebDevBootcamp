@@ -1,0 +1,11 @@
+p {
+    font-family: Verdana;
+    color: red;
+    }
+
+.div1 {
+    background-color: lightblue;
+    width: 300px;
+    border: 15px solid lightcoral;
+    padding: 50px;
+    }

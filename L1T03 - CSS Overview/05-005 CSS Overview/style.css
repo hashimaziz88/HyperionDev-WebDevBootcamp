@@ -1,0 +1,30 @@
+
+        /* Custom Styles */
+        body {
+          margin: 0; /* Remove default body margin */
+          padding-top: 0; /* Set padding-top to 0 */
+      }
+
+      .navbar-cv {
+          color: white; /* Set navbar text color to white */
+      }
+
+      /* About Me Section Styles */
+      .about-me-section {
+          background: url('images/setup.jpg') center/cover no-repeat;
+          background-size: cover;
+          color: white; /* Set default text color to white */
+          padding: 80px 0; /* Increase padding for better spacing */
+      }
+
+      /* About Me Heading and Paragraph Styles */
+      .about-me-heading,
+      .about-me-paragraph {
+          color: black; /* Set text color to black */
+      }
+
+      /* Button Styles */
+      .btn-primary {
+          background-color: black; /* Set button background color to black */
+          color: white; /* Set button text color to white */
+      }

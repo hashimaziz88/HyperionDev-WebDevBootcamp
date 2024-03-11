@@ -1,32 +1,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Hashim Aziz Muhammad - Personal Website</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons -->
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&family=Varela+Round&display=swap"
+      rel="stylesheet"
     />
-    <title>Your Website Title</title>
-
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Your custom CSS file if you have one -->
-    <!-- <link href="path/to/your/custom.css" rel="stylesheet"> -->
+    <!-- CSS -->
+    <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#showcase" class="navbar-brand">Hashim's CV</a>
-        <!-- Add other navbar items if needed -->
+        <a href="#showcase" class="navbar-brand">Hashim's Portfolio Website</a>
+        <!-- Hamburger icon for smaller screens -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a href="#about" class="nav-link">About Me</a>
             </li>
-            <!-- Add other navbar links as needed -->
+            <li class="nav-item">
+              <a href="#resume-section" class="nav-link">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact-section" class="nav-link">Contact</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -41,21 +64,27 @@
         <div class="row align-items-center justify-content-between">
           <div class="col-md-12">
             <h1 class="mb-3 mt-5">
-              Become a <span class="text-warning">Web Developer</span>
+              <span class="text-warning">Hashim Aziz Muhammad</span>
             </h1>
             <p class="lead mb-4">
               Welcome to my personal website! I'm passionate about web
               development, and here you can learn more about my journey and
-              experiences in the tech world.
+              experiences in the tech world. In my pursuit of excellence, I am
+              committed to continuous learning and staying abreast of the latest
+              trends in web development. From crafting elegant user interfaces
+              to diving into the intricacies of backend development, I am
+              excited to showcase my skills and contributions. Whether you're a
+              fellow developer, a prospective collaborator, or simply curious
+              about the tech landscape, I invite you to explore my journey and
+              connect with me. Let's build something incredible together!
             </p>
-            <!-- Add your introduction here -->
           </div>
         </div>
       </div>
     </section>
 
     <!-- About Me Section -->
-    <section class="section about-section blue-bg" id="about">
+    <section class="section about-section bg-light" id="about">
       <div class="container">
         <div
           class="row align-items-center justify-content-around flex-row-reverse"
@@ -73,7 +102,14 @@
                 evolving skill set to the development of innovative solutions.
               </p>
               <div class="btn-bar">
-                <a class="px-btn theme" href="#">View Portfolio</a>
+                <div class="btn-bar">
+                  <button
+                    class="btn btn-primary btn-lg"
+                    onclick="window.open('https://github.com/hashimaziz88', '_blank')"
+                  >
+                    View Portfolio
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -86,6 +122,139 @@
               />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume-section" class="resume-section bg-light text-black">
+      <div class="container">
+        <h2 class="text-center mb-4">Resume</h2>
+        <div class="row">
+          <!-- Work Experience Card -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Work Experience</h5>
+                <p><strong>Village Square Pharmacy</strong></p>
+                <p>Pharmacist Assistant Post Basic</p>
+                <p>December 2020 - January 2021 (2 months)</p>
+                <p>
+                  Collaboration with NWU for Learning in Workplace and Community
+                  Assignment
+                </p>
+                <p>Worked in the capacity of Post Basic Pharmacist Assistant</p>
+              </div>
+            </div>
+          </div>
+          <!-- University Card -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">University</h5>
+                <p>
+                  <strong>North-West University / Noordwes-Universiteit</strong>
+                </p>
+                <p>Bachelors of Pharmacy (Grade: 3rd Year Completed)</p>
+                <p>January 2018 - December 2021</p>
+                <p>Location: City of Johannesburg, Gauteng, South Africa</p>
+              </div>
+            </div>
+          </div>
+          <!-- School Card -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">School</h5>
+                <p><strong>Bethlehem Voortrekker High School</strong></p>
+                <p>Matric Exemption With Bachelors Pass</p>
+                <p>2013 - 2017</p>
+                <p>Distinctions in Life Orientation and Accounting</p>
+              </div>
+            </div>
+          </div>
+          <!-- Skills Card -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Skills</h5>
+                <p><strong>Top Skills</strong></p>
+                <!-- Badges for Skills -->
+                <span class="badge bg-success mb-1">HTML</span><br />
+                <span class="badge bg-success mb-1">CSS</span><br />
+                <span class="badge bg-success mb-1">Linux</span><br />
+                <span class="badge bg-success mb-1">Python</span><br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact-->
+    <section id="contact-section" class="contact-section bg-dark text-white">
+      <div class="container px-4 px-lg-5">
+        <h2 class="text-center mb-4">Contact Me</h2>
+        <div class="row gx-4 gx-lg-5">
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100 mx-auto">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Location</h4>
+                <hr class="my-4 mx-auto" />
+                <div class="small text-black-50">
+                  Johannesburg, South Africa
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Email</h4>
+                <hr class="my-4 mx-auto" />
+                <div class="small text-black-50">
+                  <a href="mailto:hashimazizm@gmail.com"
+                    >hashimazizm@gmail.com</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fa-brands fa-linkedin text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">LinkedIn</h4>
+                <hr class="my-4 mx-auto" />
+                <div class="small text-black-50">
+                  <a
+                    href="https://www.linkedin.com/in/hashimaziz88/"
+                    target="_blank"
+                  >
+                    Hashim Aziz Muhammad
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social d-flex justify-content-center">
+          <a
+            class="mx-2"
+            href="https://www.linkedin.com/in/hashimaziz88/"
+            target="_blank"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            class="mx-2"
+            href="https://github.com/hashimaziz88"
+            target="_blank"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
       </div>
     </section>

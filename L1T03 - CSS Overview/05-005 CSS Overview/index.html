@@ -1,49 +1,96 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css" />
-    <title>FrontEnd CV</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Your Website Title</title>
 
-<body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg bg-secondary navbar-secondary">
-        <div class="container">
-            <a href="#" class="navbar-cv">Hashim's CV</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#work" class="nav-link">Work Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#education" class="nav-link">Educational Background</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Your custom CSS file if you have one -->
+    <!-- <link href="path/to/your/custom.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="#showcase" class="navbar-brand">Hashim's CV</a>
+        <!-- Add other navbar items if needed -->
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="#about" class="nav-link">About Me</a>
+            </li>
+            <!-- Add other navbar links as needed -->
+          </ul>
         </div>
+      </div>
     </nav>
 
-    <!-- About Me -->
-    <section id="about" class="about-me-section text-center">
-        <div class="container">
-            <div>
-                <h1 class="about-me-heading">About Me</h1>
-                <p class="lead about-me-paragraph">
-                    This is a lead paragraph. It stands out from regular paragraphs.
-                </p>
-                <button class="btn-primary btn-lg">I need a button</button>
-            </div>
+    <!-- Showcase -->
+    <section
+      id="showcase"
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+    >
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-md-12">
+            <h1 class="mb-3 mt-5">
+              Become a <span class="text-warning">Web Developer</span>
+            </h1>
+            <p class="lead mb-4">
+              Welcome to my personal website! I'm passionate about web
+              development, and here you can learn more about my journey and
+              experiences in the tech world.
+            </p>
+            <!-- Add your introduction here -->
+          </div>
         </div>
+      </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" in
+    <!-- About Me Section -->
+    <section class="section about-section blue-bg" id="about">
+      <div class="container">
+        <div
+          class="row align-items-center justify-content-around flex-row-reverse"
+        >
+          <div class="col-lg-6">
+            <div class="about-text">
+              <h3 class="dark-color">About Me</h3>
+              <h4 class="theme-color">Software Development</h4>
+              <p>
+                I am Hashim Aziz Muhammad, a budding web developer currently
+                enrolled in the HyperionDev Full Stack Web Development Bootcamp.
+                Eager to broaden my skill set in web development, I bring a
+                fresh perspective and a strong appetite for learning. My
+                enthusiasm lies in embracing challenges and contributing my
+                evolving skill set to the development of innovative solutions.
+              </p>
+              <div class="btn-bar">
+                <a class="px-btn theme" href="#">View Portfolio</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="about-img">
+              <img
+                src="images/profilenobg3.png"
+                alt="Hashim Aziz Muhammad"
+                class="img-fluid rounded-circle"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JavaScript (optional, but required for certain features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

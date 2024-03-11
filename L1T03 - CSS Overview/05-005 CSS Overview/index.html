@@ -1,10 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Hashim Aziz Muhammad - Personal Website</title>
+    <meta
+      name="description"
+      content="Hashim Aziz Muhammad's personal website showcasing web development skills."
+    />
+    <meta name="author" content="Hashim Aziz Muhammad" />
+    <title>Hashim Aziz Muhammad - Web Developer Portfolio</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons -->
     <script
@@ -24,11 +28,14 @@
     <!-- CSS -->
     <link href="css/styles.css" rel="stylesheet" />
   </head>
+
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#showcase" class="navbar-brand">Hashim's Portfolio Website</a>
+        <a href="#showcase" class="navbar-brand"
+          >Hashim Aziz Muhammad - Web Developer Portfolio</a
+        >
         <!-- Hamburger icon for smaller screens -->
         <button
           class="navbar-toggler"
@@ -42,13 +49,16 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#about" class="nav-link">About Me</a>
+              <a href="#about" class="nav-link">Profile</a>
             </li>
             <li class="nav-item">
-              <a href="#resume-section" class="nav-link">Resume</a>
+              <a href="#resume-section" class="nav-link">Work Experience</a>
             </li>
             <li class="nav-item">
-              <a href="#contact-section" class="nav-link">Contact</a>
+              <a href="#Skills" class="nav-link">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact-section" class="nav-link">Contact Details</a>
             </li>
           </ul>
         </div>
@@ -58,7 +68,7 @@
     <!-- Showcase -->
     <section
       id="showcase"
-      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start mt-5 mb-3"
     >
       <div class="container">
         <div class="row align-items-center justify-content-between">
@@ -91,15 +101,15 @@
         >
           <div class="col-lg-6">
             <div class="about-text">
-              <h3 class="dark-color">About Me</h3>
+              <h3 class="dark-color">Profile</h3>
               <h4 class="theme-color">Software Development</h4>
               <p>
                 I am Hashim Aziz Muhammad, a budding web developer currently
-                enrolled in the HyperionDev Full Stack Web Development Bootcamp.
-                Eager to broaden my skill set in web development, I bring a
-                fresh perspective and a strong appetite for learning. My
-                enthusiasm lies in embracing challenges and contributing my
-                evolving skill set to the development of innovative solutions.
+                pursuing Full Stack Web Development learning. Eager to broaden
+                my skill set in web development, I bring a fresh perspective and
+                a strong appetite for learning. My enthusiasm lies in embracing
+                challenges and contributing my evolving skill set to the
+                development of innovative solutions.
               </p>
               <div class="btn-bar">
                 <div class="btn-bar">
@@ -107,7 +117,7 @@
                     class="btn btn-primary btn-lg"
                     onclick="window.open('https://github.com/hashimaziz88', '_blank')"
                   >
-                    View Portfolio
+                    View Github
                   </button>
                 </div>
               </div>
@@ -127,18 +137,22 @@
     </section>
 
     <!-- Resume Section -->
-    <section id="resume-section" class="resume-section bg-light text-black">
+    <section
+      id="resume-section"
+      class="resume-section bg-light text-black mt-5"
+    >
       <div class="container">
-        <h2 class="text-center mb-4">Resume</h2>
+        <h2 class="text-center mb-4">Work Experience and Education</h2>
         <div class="row">
-          <!-- Work Experience Card -->
-          <div class="col-md-6 col-lg-3 mb-4">
+          <!-- Work Experience Cards -->
+          <div class="col-md-4 mb-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Work Experience</h5>
-                <p><strong>Village Square Pharmacy</strong></p>
-                <p>Pharmacist Assistant Post Basic</p>
+                <h5 class="card-title">Village Square Pharmacy</h5>
+                <p><strong>Pharmacist Assistant Post Basic</strong></p>
                 <p>December 2020 - January 2021 (2 months)</p>
+                <p>December 2019 - January 2020 (2 months)</p>
+                <p>December 2018 - January 2019 (2 months)</p>
                 <p>
                   Collaboration with NWU for Learning in Workplace and Community
                   Assignment
@@ -147,43 +161,29 @@
               </div>
             </div>
           </div>
-          <!-- University Card -->
-          <div class="col-md-6 col-lg-3 mb-4">
+          <div class="col-md-4 mb-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">University</h5>
-                <p>
-                  <strong>North-West University / Noordwes-Universiteit</strong>
-                </p>
-                <p>Bachelors of Pharmacy (Grade: 3rd Year Completed)</p>
+                <h5 class="card-title">North-West University</h5>
+                <p><strong>Bachelors of Pharmacy</strong></p>
                 <p>January 2018 - December 2021</p>
-                <p>Location: City of Johannesburg, Gauteng, South Africa</p>
+                <p>
+                  Location: City of Potchefstroom, North North-West, South
+                  Africa
+                </p>
               </div>
             </div>
           </div>
-          <!-- School Card -->
-          <div class="col-md-6 col-lg-3 mb-4">
+          <div class="col-md-4 mb-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">School</h5>
-                <p><strong>Bethlehem Voortrekker High School</strong></p>
-                <p>Matric Exemption With Bachelors Pass</p>
+                <h5 class="card-title">Bethlehem Voortrekker High School</h5>
+                <p><strong>Matric Exemption With Bachelors Pass</strong></p>
                 <p>2013 - 2017</p>
-                <p>Distinctions in Life Orientation and Accounting</p>
-              </div>
-            </div>
-          </div>
-          <!-- Skills Card -->
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Skills</h5>
-                <p><strong>Top Skills</strong></p>
-                <!-- Badges for Skills -->
-                <span class="badge bg-success mb-1">HTML</span><br />
-                <span class="badge bg-success mb-1">CSS</span><br />
-                <span class="badge bg-success mb-1">Linux</span><br />
-                <span class="badge bg-success mb-1">Python</span><br />
+                <p>
+                  Distinctions in Life Orientation and Accounting. <br />
+                  Average of 75%.
+                </p>
               </div>
             </div>
           </div>
@@ -191,10 +191,83 @@
       </div>
     </section>
 
-    <!-- Contact-->
-    <section id="contact-section" class="contact-section bg-dark text-white">
+    <!-- Skills Section -->
+    <section id="Skills" class="bg-light text-black mt-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Skills</h2>
+        <div class="row">
+          <!-- Soft Skills Card -->
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Soft Skills</h3>
+                <ul>
+                  <li>
+                    <strong>Adaptability:</strong> Proven ability to adapt to
+                    new situations and environments, ensuring effective
+                    performance in dynamic settings.
+                  </li>
+                  <li>
+                    <strong>Resilience:</strong> Demonstrated resilience in
+                    overcoming challenges and maintaining a positive attitude
+                    during periods of change and uncertainty.
+                  </li>
+                  <li>
+                    <strong>Communication:</strong> Excellent verbal and written
+                    communication skills, facilitating clear and concise
+                    interactions with team members and stakeholders.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Hard Skills Card -->
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Hard Skills</h3>
+                <h4>Customer Relationship Management (CRM):</h4>
+                <ul>
+                  <li>
+                    Building and maintaining customer relationships for sales
+                    growth
+                  </li>
+                  <li>Direct Sales</li>
+                </ul>
+                <h4>Sales and Marketing:</h4>
+                <ul>
+                  <li>Social Media Strategy</li>
+                  <li>Sales Operations</li>
+                  <li>Data-Driven Decision Making</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Language Proficiencies Card -->
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Language and System Proficiencies</h3>
+                <!-- Badges for Language Proficiencies -->
+                <span class="badge bg-primary mb-1">Pyhton</span><br />
+                <span class="badge bg-primary mb-1">JavaScript</span><br />
+                <span class="badge bg-primary mb-1">HTML + CSS</span><br />
+                <span class="badge bg-primary mb-1">Linux</span><br />
+                <span class="badge bg-primary mb-1">GIT</span><br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section
+      id="contact-section"
+      class="contact-section bg-dark text-white mt-5"
+    >
       <div class="container px-4 px-lg-5">
-        <h2 class="text-center mb-4">Contact Me</h2>
+        <h2 class="text-center mb-4">Contact Details</h2>
         <div class="row gx-4 gx-lg-5">
           <div class="col-md-4 mb-3 mb-md-0">
             <div class="card py-4 h-100 mx-auto">

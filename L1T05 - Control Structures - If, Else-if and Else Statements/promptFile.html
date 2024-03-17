@@ -1,20 +1,82 @@
-!<!DOCTYPE html>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City of Cape Town Water Tariff Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
       body {
-        background-color: black;
-        color: white;
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .container {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin-top: 50px;
+      }
+      h1 {
+        color: #007bff;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      label {
+        font-weight: bold;
+        color: #555;
+      }
+      button {
+        width: 100%;
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      p {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #28a745;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
       }
     </style>
-    <script type="text/javascript" src="waterTariffs.js"></script>
+    <script src="waterTariffs.js" defer></script>
   </head>
-
   <body>
-    Hi! Open console to see your output.
-    <br />
-    <hr />
-    Right-click -> Inspect
+    <div class="container">
+      <h1 class="mt-5 mb-4">City of Cape Town Water Tariff Calculator</h1>
+      <div class="form-group">
+        <label for="waterUsage">Enter water usage in litres:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="waterUsage"
+          min="0"
+          required
+        />
+      </div>
+      <button class="btn btn-primary mb-3" onclick="calculateBill()">
+        Calculate
+      </button>
+      <p id="result"></p>
+    </div>
   </body>
 </html>

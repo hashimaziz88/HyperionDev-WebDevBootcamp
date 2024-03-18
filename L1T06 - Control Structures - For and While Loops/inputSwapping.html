@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Swapping</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom CSS for additional styling */
+      .container {
+        margin-top: 50px;
+      }
+      #resultMessage {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mb-4">Number Swapping</h2>
+      <div class="mb-3">
+        <label for="numberInput" class="form-label"
+          >Enter a number of at least 3 digits:</label
+        >
+        <input
+          type="number"
+          class="form-control"
+          id="numberInput"
+          min="100"
+          required
+        />
+        <div id="validationMessage" class="form-text text-danger"></div>
+      </div>
+      <button onclick="swapNumbers()" class="btn btn-primary">
+        Swap Numbers
+      </button>
+      <div id="resultMessage"></div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="swapping.js"></script>
+  </body>
+</html>

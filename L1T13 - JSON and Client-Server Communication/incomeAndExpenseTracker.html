@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Income & Expense Tracker</title>
+  </head>
+  <body>
+    <h2>Income</h2>
+    <ul id="income-list"></ul>
+    <button onclick="addIncome()">Add Income</button>
+
+    <h2>Expenses</h2>
+    <ul id="expense-list"></ul>
+    <button onclick="addExpense()">Add Expense</button>
+
+    <hr />
+
+    <p>Total Income: R<span id="total-income">0</span></p>
+    <p>Total Expenses: R<span id="total-expense">0</span></p>
+
+    <p>Disposable Income: R<span id="disposable-income">0</span></p>
+    <p>Amount Saved: R<span id="amount-saved">0</span></p>
+
+    <button onclick="calculateDisposable()">Calculate Disposable</button>
+
+    <script src="incomeAndExpense.js"></script>
+  </body>
+</html>

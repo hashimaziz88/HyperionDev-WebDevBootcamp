@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chef's Special Orders</title>
+    <title>Chef's Favourite Meals</title>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>Chef's Special Orders</h1>
-    <div id="message"></div>
-    <button id="takeOrderBtn">Place Order</button>
-    <br />
-    <div id="orderDisplay"></div>
-    <button id="completeOrderBtn">Complete Order</button>
-    <script src="mealdb.js"></script>
+  <body
+    style="
+      background-image: url('images/restaurant-2623071_1280.jpg');
+      background-size: cover;
+      background-position: center;
+    "
+  >
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center h-100">
+        <div
+          class="col-12 col-md-8 col-lg-6 mx-auto rounded shadow bg-light p-4"
+        >
+          <h1>Chef's Favourite Meals</h1>
+          <div id="message" class="alert alert-info" role="alert"></div>
+          <p>
+            Click the button below to get our chefs favorite meal based on your
+            main ingredient. You will be given an order number and the name of
+            your dish!
+          </p>
+          <button id="takeOrderBtn" class="btn btn-primary">
+            Start Building Your Order
+          </button>
+          <br />
+          <div id="incompleteOrdersDisplay" class="mt-4">
+            <h2>Incomplete Orders</h2>
+          </div>
+          <br />
+          <div id="completedOrdersDisplay" class="mt-4">
+            <h2>Completed Orders</h2>
+          </div>
+          <div class="mt-4">
+            <p>
+              Make use of the "Complete Order" button below to set an order to
+              complete and move the order to the completed orders list.
+            </p>
+          </div>
+          <button id="completeOrderBtn" class="btn btn-success mt-4">
+            Complete Order
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mealDB.js"></script>
   </body>
 </html>

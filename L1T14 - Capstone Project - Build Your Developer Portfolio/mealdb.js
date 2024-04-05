@@ -2,6 +2,7 @@ const messageEl = document.getElementById("message");
 const ingredientInput = document.getElementById("ingredientInput");
 const orderDisplay = document.getElementById("orderDisplay");
 
+// Function to take an order from a user.
 function takeOrder() {
   // Prompt for ingredient
   const ingredient = prompt("Enter your main ingredient:")
@@ -46,6 +47,7 @@ function takeOrder() {
     .catch((error) => console.error("Error fetching data:", error));
 }
 
+// Function to set an order by given order number to complete.
 function completeOrder() {
   const orders = JSON.parse(sessionStorage.getItem("orders") || "[]");
 
@@ -54,19 +56,27 @@ function completeOrder() {
     return;
   }
 
-  // Generate the list of order numbers and descriptions
+  // Generate the list of order numbers and descriptions for incomplete orders
   let orderList = "";
   orders.forEach((order, index) => {
-    orderList += `${index + 1}: Order #${order.orderNumber} - ${
-      order.description
-    }\n`;
+    if (order.completionStatus === "incomplete") {
+      orderList += `${index + 1}: Order #${order.orderNumber} - ${
+        order.description
+      }\n`;
+    }
   });
 
   const orderSelection = prompt(
-    `Enter order number to complete (or 0 to skip):\n${orderList}`
+    `Enter order number to complete (or press Cancel, leave response empty or enter "0" to not complete order.):\n${orderList}`
   );
 
+  if (orderSelection === null || orderSelection.trim() === "") {
+    // Cancel button pressed or empty input, do nothing
+    return;
+  }
+
   if (orderSelection === "0") {
+    messageEl.textContent = "Order completion skipped.";
     return;
   }
 
@@ -79,12 +89,22 @@ function completeOrder() {
   }
 
   if (orders[orderIndex].completionStatus === "completed") {
-    alert("Order has already been completed.");
-    return;
+    alert("Order already completed.");
+    messageEl.textContent = "Order already completed.";
+    return completeOrder(); // Reprompt the user for a valid order number
   }
 
+  // Mark the order as completed
   orders[orderIndex].completionStatus = "completed";
   sessionStorage.setItem("orders", JSON.stringify(orders));
+
+  // Move completed order to completed orders list
+  const completedOrder = orders.splice(orderIndex, 1)[0];
+  const completedOrders = JSON.parse(
+    sessionStorage.getItem("completedOrders") || "[]"
+  );
+  completedOrders.push(completedOrder);
+  sessionStorage.setItem("completedOrders", JSON.stringify(completedOrders));
 
   // Display the updated list of incomplete orders after completing an order
   displayOrders();
@@ -92,25 +112,40 @@ function completeOrder() {
   messageEl.textContent = `Order #${orderSelection} marked as completed.`;
 }
 
+// Function so that complete and icomplete orders can be added to a list and displayed.
 function displayOrders() {
   const orders = JSON.parse(sessionStorage.getItem("orders") || "[]");
+  const incompleteOrdersDisplay = document.getElementById(
+    "incompleteOrdersDisplay"
+  );
+  const completedOrdersDisplay = document.getElementById(
+    "completedOrdersDisplay"
+  );
 
   if (orders.length === 0) {
-    orderDisplay.textContent = "No incomplete orders found.";
+    incompleteOrdersDisplay.innerHTML = "No incomplete orders found.";
+    completedOrdersDisplay.innerHTML = "No completed orders found.";
     return;
   }
 
-  let incompleteOrdersText = "Incomplete orders:\n";
+  let incompleteOrdersText = "Incomplete orders:<br>";
+  let completedOrdersText = "Completed orders:<br>";
   orders.forEach((order) => {
     if (order.completionStatus === "incomplete") {
-      incompleteOrdersText += `#${order.orderNumber}: ${order.description}\n`;
+      incompleteOrdersText += `#${order.orderNumber}: ${order.description}<br>`;
+    } else {
+      completedOrdersText += `#${order.orderNumber}: ${order.description}<br>`;
     }
   });
 
-  orderDisplay.textContent = incompleteOrdersText;
+  incompleteOrdersDisplay.innerHTML = incompleteOrdersText;
+  completedOrdersDisplay.innerHTML = completedOrdersText;
 }
 
 document.getElementById("takeOrderBtn").addEventListener("click", takeOrder);
 document
   .getElementById("completeOrderBtn")
   .addEventListener("click", completeOrder);
+
+// Call displayOrders when the page loads
+displayOrders();

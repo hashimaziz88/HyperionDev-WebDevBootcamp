@@ -3,7 +3,7 @@ const ingredientInput = document.getElementById("ingredientInput");
 const orderDisplay = document.getElementById("orderDisplay");
 
 // Function to take an order from a user.
-function takeOrder() {
+async function takeOrder() {
   // Prompt for ingredient
   const ingredient = prompt("Enter your main ingredient:")
     .toLowerCase()
@@ -17,7 +17,7 @@ function takeOrder() {
 
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`;
 
-  fetch(url)
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => {
       if (!data.meals) {
@@ -132,9 +132,9 @@ function displayOrders() {
   let completedOrdersText = "Completed orders:<br>";
   orders.forEach((order) => {
     if (order.completionStatus === "incomplete") {
-      incompleteOrdersText += `#${order.orderNumber}: ${order.description}<br>`;
+      incompleteOrdersText += `Order Number #${order.orderNumber}: ${order.description}<br>`;
     } else {
-      completedOrdersText += `#${order.orderNumber}: ${order.description}<br>`;
+      completedOrdersText += `Order Number #${order.orderNumber}: ${order.description}<br>`;
     }
   });
 

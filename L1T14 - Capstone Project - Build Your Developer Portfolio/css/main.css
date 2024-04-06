@@ -51,7 +51,7 @@ hr {
   font-size: 50px;
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   margin-top: 30px;
-  color: rgb(196, 239, 242);
+  color: white;
 }
 
 .h2 {
@@ -85,7 +85,7 @@ p {
   text-align: center;
 }
 
-.btn {
+.btn-default {
   background-color: rgb(196, 239, 242);
   color: rgb(64, 9, 119);
   min-width: 3.6rem;
@@ -168,7 +168,7 @@ p {
   border-color: rgb(64, 9, 119);
 }
 .bg-section {
-  background-image: url("../images/pexels-yusuf-sabqi-18096357.jpg");
+  background-image: url("../images/pexels-aleksandar-pasaric-2603464.jpg");
   background-size: cover;
   background-position: center;
   /* Add any other background properties as needed */

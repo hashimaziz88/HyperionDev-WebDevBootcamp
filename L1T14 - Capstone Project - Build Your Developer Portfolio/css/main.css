@@ -1,175 +1,189 @@
+/* Set default styles for body */
 body {
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  color: rgb(255, 255, 255); /* White text color */
+  font-size: 18px; /* Default font size */
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; /* Font family stack */
 }
 
+/* Set styles for body and html elements */
 body,
 html {
-  height: 110%;
-  scroll-behavior: smooth;
-  background-color: rgb(37, 37, 37);
+  height: 110%; /* Extend height to 110% */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+  background-color: rgb(37, 37, 37); /* Dark background color */
 }
 
+/* Horizontal rule styles */
 hr {
-  border: none;
-  height: 6px;
-  color: #333;
-  background-color: #333;
+  border: none; /* No border */
+  height: 6px; /* Height of 6 pixels */
+  color: #333; /* Dark color */
+  background-color: #333; /* Background color same as border color */
 }
 
+/* Hero image container styles */
 .hero-image {
-  background-image: url("../images/ai-generated-8640900_1920.jpg");
-  height: 75%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  background-image: url("../images/hackerHeroImage.jpg"); /* Background image */
+  height: 75%; /* Height of 75% of the viewport */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat background image */
+  background-size: cover; /* Cover the entire container */
+  position: relative; /* Positioning context for absolute positioning inside */
 }
 
+/* Styles for text within hero section */
 .hero-text {
-  text-align: center;
-  position: absolute;
-  padding-top: 80px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
+  text-align: center; /* Center align text */
+  position: absolute; /* Position absolute */
+  padding-top: 80px; /* Top padding */
+  top: 50%; /* Position at vertical center */
+  left: 50%; /* Position at horizontal center */
+  transform: translate(-50%, -50%); /* Center the text */
+  color: white; /* White text color */
 }
 
+/* Styles for profile image */
 .profile-image img {
-  height: 200px;
-  width: 200px;
-  position: relative;
-  border-radius: 50%;
-  border: 50px;
-  text-align: center;
+  height: 200px; /* Height of profile image */
+  width: 200px; /* Width of profile image */
+  position: relative; /* Positioning context */
+  border-radius: 50%; /* Circular border */
+  border: 50px; /* Border size */
+  text-align: center; /* Center align text */
 }
 
+/* Styles for h1 headings */
 .h1 {
-  text-align: center;
-  font-size: 50px;
-  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  margin-top: 30px;
-  color: white;
+  text-align: center; /* Center align text */
+  font-size: 50px; /* Font size */
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; /* Font family stack */
+  margin-top: 30px; /* Top margin */
+  color: white; /* White text color */
 }
 
+/* Styles for h2 headings */
 .h2 {
-  text-align: center;
-  font-size: 23px;
-  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  color: rgb(196, 239, 242);
-  padding-top: 30px;
-  text-align: center;
+  text-align: center; /* Center align text */
+  font-size: 23px; /* Font size */
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; /* Font family stack */
+  color: rgb(196, 239, 242); /* Light blue text color */
+  padding-top: 30px; /* Top padding */
+  text-align: center; /* Center align text */
 }
 
+/* More styles for h2 headings */
 h2 {
-  text-align: center;
+  text-align: center; /* Center align text */
+  text-decoration: underline; /* Underline text */
 }
 
+/* Styles for h6 headings */
 h6 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  text-align: center; /* Center align text */
+  margin-bottom: 2rem; /* Bottom margin */
+  font-size: 2rem; /* Font size */
 }
 
+/* Styles for h5 headings */
+h5 {
+  text-decoration: underline; /* Underline text */
+  font-size: 1.63rem; /* Font size */
+  text-align: center; /* Center align text */
+}
+
+/* Styles for h3 headings */
 .h3,
 h3 {
-  font-size: 1.63rem;
-  text-align: center;
+  font-size: 1.63rem; /* Font size */
+  text-align: center; /* Center align text */
 }
 
+/* Paragraph styles */
 p {
-  margin-top: 0;
-  margin-top: 1rem;
-  text-align: center;
+  margin-top: 0; /* No top margin */
+  margin-top: 1rem; /* Top margin */
+  text-align: center; /* Center align text */
 }
 
+/* Default button styles */
 .btn-default {
-  background-color: rgb(196, 239, 242);
-  color: rgb(64, 9, 119);
-  min-width: 3.6rem;
-  border-radius: 30px !important;
-  margin-right: 10px;
+  background-color: rgb(196, 239, 242); /* Background color */
+  color: rgb(64, 9, 119); /* Text color */
+  min-width: 3.6rem; /* Minimum width */
+  border-radius: 30px !important; /* Border radius */
+  margin-right: 10px; /* Right margin */
 }
 
+/* Section container styles */
 .section {
-  position: relative;
-  background: transparent;
+  position: relative; /* Position relative */
+  background: transparent; /* Transparent background */
 }
 
+/* Title styles */
 .title {
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-align: center;
-  background-color: rgb(37, 37, 37);
-  color: rgb(192, 192, 192);
+  font-weight: 700; /* Font weight */
+  margin-bottom: 20px; /* Bottom margin */
+  text-align: center; /* Center align text */
+  background-color: rgb(37, 37, 37); /* Dark background color */
+  color: rgb(192, 192, 192); /* Light text color */
 }
 
+/* Column layout styles */
 .column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
+  float: left; /* Float left */
+  width: 33.3%; /* Width 33.3% */
+  margin-bottom: 16px; /* Bottom margin */
+  padding: 0 8px; /* Padding */
 }
 
-.col-md-3,
-.col-md-6,
-.col-md-9,
-.col-md-12,
-.col-lg-6 {
-  background-color: rgb(47, 47, 47);
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.col-sm-4,
-.col-sm-8 {
-  background-color: rgb(47, 47, 47);
-}
-
+/* Card styles */
 .card {
-  color: #ffffff;
-  box-shadow: 0 4px 12px 0 rgba(255, 0, 0, 0.833);
-  margin: 8px;
-  background-color: rgb(161 43, 55);
-  padding-bottom: 0 8px;
-  border-color: rgb(112, 2, 2);
+  color: #ffffff; /* White text color */
+  box-shadow: 0 4px 12px 0 rgba(255, 0, 0, 0.833); /* Box shadow */
+  margin: 8px; /* Margin */
+  background-color: rgb(161 43, 55); /* Background color */
+  padding-bottom: 0 8px; /* Padding bottom */
+  border-color: rgb(112, 2, 2); /* Border color */
 }
 
+/* Styles for about card */
 .about-card {
-  color: #ffffff;
-  box-shadow: 0 4px 12px 0 rgba(255, 0, 0, 0.833);
-  margin: 8px;
-  background-color: rgb(161 43, 55);
-  padding-bottom: 0 8px;
-  border-color: rgb(112, 2, 2);
+  color: #ffffff; /* White text color */
+  box-shadow: 0 4px 12px 0 rgba(255, 0, 0, 0.833); /* Box shadow */
+  margin: 8px; /* Margin */
+  background-color: rgb(161 43, 55); /* Background color */
+  padding-bottom: 0 8px; /* Padding bottom */
+  border-color: rgb(112, 2, 2); /* Border color */
 }
 
+/* Styles for about section */
 .about-section {
-  padding: 50px;
-  text-align: center;
-  color: white;
+  padding: 50px; /* Padding */
+  text-align: center; /* Center align text */
+  color: white; /* White text color */
 }
 
+/* Container styles */
 .container {
-  padding: 0 16px;
+  padding: 0 16px; /* Padding */
 }
 
+/* Row layout styles */
 .row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: 0;
-  margin-left: 0;
+  display: -ms-flexbox; /* Display flex for IE 10 */
+  display: flex; /* Display flex */
+  -ms-flex-wrap: wrap; /* Flex wrap for IE 10 */
+  flex-wrap: wrap; /* Flex wrap */
+  margin-right: 0; /* Right margin */
+  margin-left: 0; /* Left margin */
 
-  border: 1px;
-  border-color: rgb(64, 9, 119);
+  border: 1px; /* Border */
+  border-color: rgb(64, 9, 119); /* Border color */
 }
+
+/* Background section styles */
 .bg-section {
-  background-image: url("../images/pexels-aleksandar-pasaric-2603464.jpg");
-  background-size: cover;
-  background-position: center;
-  /* Add any other background properties as needed */
+  background-image: url("../images/cityBackgroundImage.jpg"); /* Background image */
+  background-size: cover; /* Cover the entire background */
 }

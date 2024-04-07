@@ -23,7 +23,7 @@ hr {
 
 /* Hero image container styles */
 .hero-image {
-  background-image: url("../images/hackerHeroImage.jpg"); /* Background image */
+  background-image: url("../Images/hackerHeroImage.jpg"); /* Background image */
   height: 75%; /* Height of 75% of the viewport */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Do not repeat background image */
@@ -184,6 +184,10 @@ p {
 
 /* Background section styles */
 .bg-section {
-  background-image: url("../images/cityBackgroundImage.jpg"); /* Background image */
+  background-image: url("../Images/cityBackgroundImage.jpg"); /* Background image */
   background-size: cover; /* Cover the entire background */
+}
+.email-link {
+  display: block;
+  text-align: center;
 }

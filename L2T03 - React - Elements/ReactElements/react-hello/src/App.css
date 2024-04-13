@@ -1,0 +1,70 @@
+/* Styling for the user profile container */
+.user-profile {
+  display: flex; /* Display as flex container */
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center align items horizontally */
+  margin: 50px auto; /* Margin for centering */
+  width: 600px; /* Adjust width as needed */
+  background-color: #f5f5f5; /* Background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Drop shadow */
+}
+
+/* Styling for the profile picture */
+.profile-picture {
+  width: 150px; /* Set width */
+  height: 150px; /* Set height */
+  border-radius: 50%; /* Make it round */
+  margin-bottom: 20px; /* Spacing below */
+  border: 5px solid #fff; /* White border around image */
+}
+
+/* Styling for the user information container */
+.user-info-container {
+  background-color: #fff; /* Background color */
+  padding: 20px; /* Padding inside */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Drop shadow */
+}
+
+/* Styling for headings */
+h2 {
+  font-size: 24px; /* Font size */
+  margin-bottom: 10px; /* Spacing below */
+  color: #333; /* Darker text color */
+}
+
+/* Styling for paragraphs and lists */
+p,
+ul {
+  margin-bottom: 5px; /* Spacing below */
+  color: #666; /* Lighter text color */
+}
+
+/* Styling for lists */
+ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+/* Styling for list items */
+li {
+  margin-bottom: 3px; /* Spacing below */
+}
+
+/* Styling for shopping cart heading */
+h3 {
+  margin-top: 20px; /* Space before shopping cart section */
+  color: #333; /* Darker text color */
+}
+
+/* Styling for the body */
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2023/10/25/19/25/blue-8341156_1280.jpg"); /* Background image */
+  background-size: cover; /* Cover entire viewport */
+  background-repeat: no-repeat; /* Do not repeat background image */
+  background-attachment: fixed; /* Ensure background remains fixed as user scrolls */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: Arial, sans-serif; /* Optional: Set default font */
+}

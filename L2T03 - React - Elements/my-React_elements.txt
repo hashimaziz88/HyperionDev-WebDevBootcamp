@@ -1,0 +1,76 @@
+// LinkedIn button element
+const linkedinElement = (
+  <a href="https://www.linkedin.com/in/hashimaziz88/" target="_blank" rel="noopener noreferrer" alt="LinkedIn button">
+    <button style={{ 
+      display: 'flex', 
+      alignItems: 'center',
+      backgroundColor: '#0077B5', // LinkedIn blue color
+      color: 'white', // Text color
+      border: 'none', // Remove border
+      borderRadius: '4px', // Add border radius for rounded corners
+      padding: '8px 16px', // Add padding
+      cursor: 'pointer', // Change cursor on hover
+    }}>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn logo" style={{ width: '24px', marginRight: '8px' }} />
+      View my LinkedIn
+    </button>
+  </a>
+);
+
+// Current date
+const date = new Date();
+const formatter = new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit'});
+const formattedDate = formatter.format(date);
+const dateString = date.toDateString();
+
+// Date element
+const dateElement = <h1>{dateString} {formattedDate}</h1>;
+
+// Summary element with advantages of JavaScript frameworks/libraries
+const summaryElement = (
+  <>
+    <h2>Advantages of JavaScript Frameworks/Libraries</h2>
+    <ul>
+      <li>
+        Efficiency: Frameworks/libraries provide efficient development by offering
+        pre-built components and utilities, reducing the need for repetitive code
+        writing.
+      </li>
+      <li>
+        Modularity: They promote modularity by allowing developers to divide their
+        application into smaller, reusable components, making the codebase easier
+        to maintain and scale.
+      </li>
+      <li>
+        State Management: Frameworks/libraries often come with built-in state
+        management solutions, making it easier to manage and update the
+        application's state.
+      </li>
+      <li>
+        Virtual DOM: Many frameworks/libraries, including React, use a virtual
+        DOM, which updates only the necessary parts of the actual DOM, resulting
+        in faster rendering and improved performance.
+      </li>
+      <li>
+        Community Support: Popular frameworks/libraries have large communities of
+        developers who contribute to documentation, libraries, and resources,
+        providing extensive support and knowledge sharing.
+      </li>
+      <li>
+        Tooling: They offer robust tooling ecosystems with tools like debugging
+        extensions, code generators, and testing utilities, enhancing developer
+        productivity and code quality.
+      </li>
+      <li>
+        Cross-Platform Development: Some frameworks/libraries, like React Native,
+        enable developers to build cross-platform applications for web, mobile,
+        and desktop using a single codebase.
+      </li>
+      <li>
+        Ecosystem: They have rich ecosystems with a wide range of third-party
+        libraries, plugins, and extensions, allowing developers to extend
+        functionality and integrate with other technologies easily.
+      </li>
+    </ul>
+  </>
+);

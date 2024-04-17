@@ -1,32 +1,56 @@
-import * as React from "react"
-import Card from "@mui/material/Card"
-import CardActions from "@mui/material/CardActions"
-import CardContent from "@mui/material/CardContent"
-import CardMedia from "@mui/material/CardMedia"
-import Button from "@mui/material/Button"
-import Typography from "@mui/material/Typography"
+import React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import StarRatings from "@mui/material/Rating";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+import PropTypes from "prop-types";
 
-export default function MediaCard() {
+// Define prop types for the MediaCard component
+MediaCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  rating: PropTypes.number, // Allow for optional rating prop
+  plusIcon: PropTypes.node, // Allow for optional custom plusIcon
+};
+
+export default function MediaCard(props) {
   return (
-    <Card sx={{ width: "250px", height: "335px" }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image=""
-        title="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  )
+    <div>
+      <Card sx={{ width: "250px", height: "400px" }}>
+        <CardMedia sx={{ height: 300 }} image={props.image} title="Product" />
+        <CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <Typography gutterBottom variant="h5" component="div">
+              {props.text}
+            </Typography>
+            <StarRatings
+              readOnly={true} // Set to readOnly for displaying a static rating
+              value={props.rating || 0} // Use provided rating or default to 0
+              precision={0.5}
+              size="small"
+            />
+          </div>
+          <Typography variant="body2" color="text.secondary">
+            Price: {props.price}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ justifyContent: "space-between" }}>
+          <IconButton aria-label="add to cart">
+            {props.plusIcon || <AddIcon />}
+          </IconButton>
+        </CardActions>
+      </Card>
+    </div>
+  );
 }

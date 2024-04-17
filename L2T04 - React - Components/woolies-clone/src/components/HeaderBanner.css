@@ -1,0 +1,15 @@
+.header-banner {
+  background-color: black;
+  color: white; /* Text color */
+  padding: 0.75rem; /* Adjust padding as needed */
+  text-align: center; /* Center the text within the header */
+
+}
+
+.banner-text {
+  font-size: 0.65rem; /* Adjust font size as needed */
+  margin-bottom: auto; /* Remove default margin */
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}

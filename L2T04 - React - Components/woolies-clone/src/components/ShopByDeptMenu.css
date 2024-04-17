@@ -1,0 +1,32 @@
+.shop-by-dept-menu {
+  position: relative; /* Enable positioning for the submenu */
+  display: inline-block; /* Allow for inline positioning within the navigation */
+}
+
+.submenu {
+  position: absolute; /* Position the submenu absolutely */
+  top: 100%; /* Display submenu below the main menu item */
+  left: 0; /* Align submenu to the left of the parent item */
+  background-color: #fff; /* Submenu background color */
+  list-style: none;
+  padding: 0;
+  border: 1px solid #ddd; /* Add a border for separation */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+  /* Adjust width as needed based on your design */
+  width: 200px; /* Example width */
+}
+
+.shop-by-dept-menu:hover .submenu {
+  display: block; /* Show submenu on hover */
+}
+
+.submenu a {
+  padding: 10px 15px; /* Add some padding for readability */
+  display: block; /* Make submenu items full width */
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Text color */
+}
+
+.submenu a:hover {
+  background-color: #f2f2f2; /* Highlight on hover */
+}

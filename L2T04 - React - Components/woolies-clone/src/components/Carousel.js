@@ -76,12 +76,20 @@ function Carousel({ cardDetails }) {
                         display:
                           currentTab === 0 && currentPage === index
                             ? "block"
+                            : currentTab === 1 && currentPage === index
+                            ? "block"
+                            : currentTab === 2 && currentPage === index
+                            ? "block"
                             : "none",
                       }}
                     >
                       <Slide
                         direction={slideDirection}
-                        in={currentTab === 0 && currentPage === index}
+                        in={
+                          (currentTab === 0 && currentPage === index) ||
+                          (currentTab === 1 && currentPage === index) ||
+                          (currentTab === 2 && currentPage === index)
+                        }
                       >
                         <Stack
                           spacing={2}
@@ -113,13 +121,25 @@ function Carousel({ cardDetails }) {
             )}
             {/* Carousel for Home */}
             {cards.length > 0 && (
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  display: currentTab === 1 ? "block" : "none",
+                }}
+              >
                 {/* Adjust carousel structure as needed */}
               </Box>
             )}
             {/* Carousel for Beauty */}
             {cards.length > 0 && (
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  display: currentTab === 2 ? "block" : "none",
+                }}
+              >
                 {/* Adjust carousel structure as needed */}
               </Box>
             )}

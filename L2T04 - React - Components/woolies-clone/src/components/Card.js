@@ -21,7 +21,7 @@ MediaCard.propTypes = {
 export default function MediaCard(props) {
   return (
     <div>
-      <Card sx={{ width: "250px", height: "400px" }}>
+      <Card sx={{ width: "250px", height: "500px" }}>
         <CardMedia sx={{ height: 300 }} image={props.image} title="Product" />
         <CardContent
           sx={{

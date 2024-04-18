@@ -11,9 +11,10 @@ import PropTypes from "prop-types";
 
 // Define prop types for the MediaCard component
 MediaCard.propTypes = {
-  image: PropTypes.string.isRequired, // Image source URL
-  text: PropTypes.string.isRequired, // Text content for the card
-  price: PropTypes.string.isRequired, // Price of the product
+  image: PropTypes, // Image source URL
+  text: PropTypes, // Text content for the card
+  text2: PropTypes,
+  price: PropTypes, // Price of the product
   rating: PropTypes.number, // Optional: product rating
   plusIcon: PropTypes.element, // Icon element for adding to cart
 };
@@ -41,11 +42,11 @@ export default function MediaCard(props) {
             {/* Display product name */}
             <Typography gutterBottom variant="h5" component="div">
               {props.text}
+              {props.text2}
             </Typography>
-            {/* Display product rating if available */}
             <StarRatings
               readOnly={true} // Set to readOnly for displaying a static rating
-              value={props.rating || 0} // Use provided rating or default to 0
+              value={props.rating || 5} // Use provided rating or default to 0
               precision={0.5}
               size="small"
             />

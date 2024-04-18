@@ -1,19 +1,19 @@
 .container-carousel {
-  width: 80vw; /* Base width for all devices */
+  width: 80vw;
   padding-bottom: 150px;
   background-color: #f7f7f7eb;
 }
 
 @media (max-width: 768px) {
-  /* Styles for mobile devices */
   .container-carousel {
-    width: 100%; /* Set width to 100% on mobile */
-    padding-bottom: 50px; /* Adjust padding for mobile layout */
+    width: 100%;
+    padding-bottom: 50px;
   }
 }
+
 .hovering-icons {
-  position: absolute; /* Assumes the parent container has position: relative */
+  position: absolute;
   top: 50%;
-  transform: translateY(-50%); /* Center the icons vertically */
-  z-index: 1;  /* Ensure the icons are above the card content */
+  transform: translateY(-50%);
+  z-index: 1;
 }

@@ -9,7 +9,7 @@ import {
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 
-const options = ["Shop by department", "Mother's Day", "Order Again"];
+const options = ["SHOP BY DEPARTMENT", "MOTHER'S DAY", "ORDER AGAIN"];
 
 function DummyNavbar() {
   return (
@@ -50,9 +50,7 @@ function DummyNavbar() {
                   justifyContent: "center",
                   height: "100%",
                 }}
-              >
-
-              </div>
+              ></div>
               <SearchIcon />
               {"  "}
               <InputBase

@@ -12,14 +12,15 @@ import Tab from "@mui/material/Tab";
 import "./Carousel.css";
 
 const cardWidth = 250; // Width of each card
-const cardsPerPage = 5; // Adjust as needed
+const cardsPerPage = 5; // Cards per page
+
+// Details by Category to be imported into my Carousel
 const clothingDetails = [
   {
     image:
       "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Neck-Top-CHALK-508042452.jpg?V=ko3z&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA0MjQ1Ml9DSEFMS19oZXJvLmpwZyJ9&&w=410&q=85",
-    text: "Witchery",
+    text: "Card 1",
     price: "R10",
-    additionalText: "123",
   },
   {
     image:
@@ -30,7 +31,7 @@ const clothingDetails = [
   {
     image:
       "https://assets.woolworthsstatic.co.za/Boat-Neck-Knit-Jumper-RED-507459296.jpg?V=IWWb&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTEyLTA4LzUwNzQ1OTI5Nl9SRURfaGVyby5qcGcifQ&&w=410&q=85",
-    text: "Card fas3",
+    text: "Card 3",
     price: "R30",
   },
   {
@@ -46,27 +47,32 @@ const clothingDetails = [
     price: "R50",
   },
   {
-    image: "image_url_6",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 6",
     price: "R60",
   },
   {
-    image: "image_url_7",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card hdf7",
     price: "R70",
   },
   {
-    image: "image_url_8",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-WHITE-507456548.jpg?V=GYjc&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTA2LTI3LzUwNzQ1NjU0OF9XSElURV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 8",
     price: "R80",
   },
   {
-    image: "image_url_9",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-DUSTY-PINK-506430420.jpg?V=TPOX&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAyLTAxLzUwNjQzMDQyMF9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 9",
     price: "R90",
   },
   {
-    image: "image_url_10",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 10",
     price: "R100",
   },
@@ -74,52 +80,61 @@ const clothingDetails = [
 const homeDetails = [
   {
     image:
-      "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Neck-Top-CHALK-508042452.jpg?V=ko3z&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA0MjQ1Ml9DSEFMS19oZXJvLmpwZyJ9&&w=410&q=85",
+      "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Neck-Top-CHALK-508042452.jpg?V=ko3z&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA0MjQ1Ml9DSEFMS19oZXJvLmpwZyJ9&&=410&q=85",
     text: "Card 1",
     price: "R10",
   },
   {
-    image: "image_url_2",
-    text: " 2",
+    image:
+      "https://assets.woolworthsstatic.co.za/Cotton-Blend-Henley-Top-PURE-WHITE-507976184.jpg?V=gZq2&o=&&w=410&q=85",
+    text: "Card 2",
     price: "R20",
   },
   {
-    image: "image_url_3",
-    text: "Card",
+    image:
+      "https://assets.woolworthsstatic.co.za/Boat-Neck-Knit-Jumper-RED-507459296.jpg?V=IWWb&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTEyLTA4LzUwNzQ1OTI5Nl9SRURfaGVyby5qcGcifQ&&w=410&q=85",
+    text: "Card 3",
     price: "R30",
   },
   {
-    image: "image_url_4",
+    image:
+      "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Rib-Knit-ROYAL-PURPLE-508053150.jpg?V=4ccM&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA1MzE1MF9ST1lBTFBVUlBMRV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 4",
     price: "R40",
   },
   {
-    image: "image_url_5",
+    image:
+      "https://assets.woolworthsstatic.co.za/Ribbed-Poloneck-DUSTY-PINK-507459212.jpg?V=a5x5&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAxLTA1LzUwNzQ1OTIxMl9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 5",
     price: "R50",
   },
   {
-    image: "image_url_6",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 6",
     price: "R60",
   },
   {
-    image: "image_url_7",
-    text: "Card 7",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
+    text: "Card hdf7",
     price: "R70",
   },
   {
-    image: "image_url_8",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-WHITE-507456548.jpg?V=GYjc&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTA2LTI3LzUwNzQ1NjU0OF9XSElURV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 8",
     price: "R80",
   },
   {
-    image: "image_url_9",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-DUSTY-PINK-506430420.jpg?V=TPOX&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAyLTAxLzUwNjQzMDQyMF9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 9",
     price: "R90",
   },
   {
-    image: "image_url_10",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 10",
     price: "R100",
   },
@@ -132,47 +147,56 @@ const beautyDetails = [
     price: "R10",
   },
   {
-    image: "image_url_2",
-    text: "Card",
+    image:
+      "https://assets.woolworthsstatic.co.za/Cotton-Blend-Henley-Top-PURE-WHITE-507976184.jpg?V=gZq2&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwNzk3NjE4NF9QVVJFV0hJVEVfaGVyby5qcGcifQ&&w=410&q=85",
+    text: "Card 2",
     price: "R20",
   },
   {
-    image: "image_url_3",
-    text: "dass",
+    image:
+      "https://assets.woolworthsstatic.co.za/Boat-Neck-Knit-Jumper-RED-507459296.jpg?V=IWWb&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTEyLTA4LzUwNzQ1OTI5Nl9SRURfaGVyby5qcGcifQ&&w=410&q=85",
+    text: "Card 3",
     price: "R30",
   },
   {
-    image: "image_url_4",
+    image:
+      "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Rib-Knit-ROYAL-PURPLE-508053150.jpg?V=4ccM&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA1MzE1MF9ST1lBTFBVUlBMRV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 4",
     price: "R40",
   },
   {
-    image: "image_url_5",
+    image:
+      "https://assets.woolworthsstatic.co.za/Ribbed-Poloneck-DUSTY-PINK-507459212.jpg?V=a5x5&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAxLTA1LzUwNzQ1OTIxMl9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 5",
     price: "R50",
   },
   {
-    image: "image_url_6",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 6",
     price: "R60",
   },
   {
-    image: "image_url_7",
-    text: "Card 7",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
+    text: "Card hdf7",
     price: "R70",
   },
   {
-    image: "image_url_8",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-WHITE-507456548.jpg?V=GYjc&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTA2LTI3LzUwNzQ1NjU0OF9XSElURV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 8",
     price: "R80",
   },
   {
-    image: "image_url_9",
+    image:
+      "https://assets.woolworthsstatic.co.za/Plain-Cotton-Sleepsuit-DUSTY-PINK-506430420.jpg?V=TPOX&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAyLTAxLzUwNjQzMDQyMF9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 9",
     price: "R90",
   },
   {
-    image: "image_url_10",
+    image:
+      "https://assets.woolworthsstatic.co.za/Apple-Print-Zip-up-Sleepsuit-X-PINK-507617696.jpg?V=oNeE&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTExLTA4LzUwNzYxNzY5Nl9YUElOS19oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 10",
     price: "R100",
   },
@@ -265,30 +289,6 @@ function Carousel() {
                 ))}
             </Stack>
           </Slide>
-          {/* Move next icon above the last card */}
-          {currentPage === index &&
-            index === Math.floor(cards.length / cardsPerPage) - 1 && (
-              <IconButton
-                onClick={handleNextPage}
-                sx={{ margin: "0 auto" }}
-                disabled={
-                  currentPage >=
-                  Math.ceil((cards.length || 0) / cardsPerPage) - 1
-                }
-              >
-                <NavigateNextIcon />
-              </IconButton>
-            )}
-          {/* Move previous icon above the first card */}
-          {currentPage === index && index === 0 && (
-            <IconButton
-              onClick={handlePrevPage}
-              sx={{ margin: "0 auto" }}
-              disabled={currentPage === 0}
-            >
-              <NavigateBeforeIcon />
-            </IconButton>
-          )}
         </Box>
       </div>
     ));

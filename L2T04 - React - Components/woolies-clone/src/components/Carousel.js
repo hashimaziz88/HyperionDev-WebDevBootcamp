@@ -11,6 +11,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./Carousel.css";
 
+const cardWidth = 250; // Width of each card
+const cardsPerPage = 5; // Adjust as needed
 const clothingDetails = [
   {
     image:
@@ -26,17 +28,20 @@ const clothingDetails = [
     price: "R20",
   },
   {
-    image: "image_url_3",
+    image:
+      "https://assets.woolworthsstatic.co.za/Boat-Neck-Knit-Jumper-RED-507459296.jpg?V=IWWb&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDIzLTEyLTA4LzUwNzQ1OTI5Nl9SRURfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card fas3",
     price: "R30",
   },
   {
-    image: "image_url_4",
+    image:
+      "https://assets.woolworthsstatic.co.za/Wool-Blend-Crew-Rib-Knit-ROYAL-PURPLE-508053150.jpg?V=4ccM&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTA0LTA0LzUwODA1MzE1MF9ST1lBTFBVUlBMRV9oZXJvLmpwZyJ9&&w=410&q=85",
     text: "Card 4",
     price: "R40",
   },
   {
-    image: "image_url_5",
+    image:
+      "https://assets.woolworthsstatic.co.za/Ribbed-Poloneck-DUSTY-PINK-507459212.jpg?V=a5x5&o=eyJidWNrZXQiOiJ3dy1vbmxpbmUtaW1hZ2UtcmVzaXplIiwia2V5IjoiaW1hZ2VzL2VsYXN0aWNlcmEvcHJvZHVjdHMvaGVyby8yMDI0LTAxLTA1LzUwNzQ1OTIxMl9EVVNUWVBJTktfaGVyby5qcGcifQ&&w=410&q=85",
     text: "Card 5",
     price: "R50",
   },
@@ -174,12 +179,11 @@ const beautyDetails = [
 ];
 
 function Carousel() {
-  const [currentTab, setCurrentTab] = useState(0); // Track current tab index
-  const [cards, setCards] = useState([]); // State to hold the cards based on the selected tab
+  const [currentTab, setCurrentTab] = useState(0);
+  const [cards, setCards] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [slideDirection, setSlideDirection] = useState("left");
-
-  const cardsPerPage = 5; // Adjust as needed
+  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
     const initialCards = getDetails(currentTab);
@@ -195,6 +199,18 @@ function Carousel() {
       ))
     );
   }, [currentTab]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const availableWidth = Math.min(screenWidth, cardWidth * cardsPerPage);
+      setContainerWidth(availableWidth);
+    };
+
+    handleResize(); // Initial resize
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const getDetails = (tabIndex) => {
     switch (tabIndex) {
@@ -221,9 +237,8 @@ function Carousel() {
 
   const renderCards = () => {
     return cards.map((card, index) => (
-      <div>
+      <div key={index}>
         <Box
-          key={`card-${index}`}
           sx={{
             width: "100%",
             height: "100%",
@@ -238,68 +253,99 @@ function Carousel() {
               justifyContent="center"
               sx={{ width: "100%", height: "100%" }}
             >
-              {cards.slice(
-                index * cardsPerPage,
-                index * cardsPerPage + cardsPerPage
-              )}
+              {cards
+                .slice(
+                  index * cardsPerPage,
+                  index * cardsPerPage + cardsPerPage
+                )
+                .map((card, idx) => (
+                  <div key={idx} style={{ width: `${100 / cardsPerPage}%` }}>
+                    {card}
+                  </div>
+                ))}
             </Stack>
           </Slide>
+          {/* Move next icon above the last card */}
+          {currentPage === index &&
+            index === Math.floor(cards.length / cardsPerPage) - 1 && (
+              <IconButton
+                onClick={handleNextPage}
+                sx={{ margin: "0 auto" }}
+                disabled={
+                  currentPage >=
+                  Math.ceil((cards.length || 0) / cardsPerPage) - 1
+                }
+              >
+                <NavigateNextIcon />
+              </IconButton>
+            )}
+          {/* Move previous icon above the first card */}
+          {currentPage === index && index === 0 && (
+            <IconButton
+              onClick={handlePrevPage}
+              sx={{ margin: "0 auto" }}
+              disabled={currentPage === 0}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+          )}
         </Box>
       </div>
     ));
   };
 
-  const containerWidth = cardsPerPage * 250; // 250px per card
-
   return (
     <div style={{ backgroundColor: "#F7F7F7" }}>
-      <h2 style={{ textAlign: "center" }}>Recommended for you</h2>
+      <div className="container">
+        <h2 style={{ textAlign: "center" }}>Recommended for you</h2>
 
-      <Box className="container-carousel">
-        <Tabs
-          value={currentTab}
-          onChange={(event, newValue) => setCurrentTab(newValue)} // Handle tab change
-          centered // Center align tabs
-        >
-          <Tab label="Clothing" />
-          <Tab label="Home" />
-          <Tab label="Beauty" />
-        </Tabs>
-        <div>
-          <Box sx={{ height: "400px" }}>
-            {cards.length > 0 && (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "2.0rem", // Adjust this value as needed
-                }}
-              >
-                <IconButton
-                  onClick={handlePrevPage}
-                  sx={{ margin: 5 }}
-                  disabled={currentPage === 0}
+        <Box className="container-carousel">
+          <Tabs
+            value={currentTab}
+            onChange={(event, newValue) => setCurrentTab(newValue)}
+            centered
+          >
+            <Tab label="Clothing" />
+            <Tab label="Home" />
+            <Tab label="Beauty" />
+          </Tabs>
+          <div>
+            <Box>
+              {cards.length > 0 && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "2.0rem",
+                  }}
                 >
-                  <NavigateBeforeIcon />
-                </IconButton>
-                <Box sx={{ width: `${containerWidth}px`, height: "100%" }}>
-                  {renderCards()}
+                  <IconButton
+                    onClick={handlePrevPage}
+                    sx={{ margin: 5 }}
+                    disabled={currentPage === 0}
+                  >
+                    <NavigateBeforeIcon />
+                  </IconButton>
+                  <Box sx={{ width: `${containerWidth}px`, height: "100%" }}>
+                    {renderCards()}
+                  </Box>
+                  <IconButton
+                    onClick={handleNextPage}
+                    sx={{ margin: 5 }}
+                    disabled={
+                      currentPage >=
+                      Math.ceil((cards.length || 0) / cardsPerPage) - 1
+                    }
+                  >
+                    <NavigateNextIcon />
+                  </IconButton>
                 </Box>
-                <IconButton
-                  onClick={handleNextPage}
-                  sx={{ margin: 5 }}
-                  disabled={
-                    currentPage >=
-                    Math.ceil((cards.length || 0) / cardsPerPage) - 1
-                  }
-                >
-                  <NavigateNextIcon />
-                </IconButton>
-              </Box>
-            )}
-          </Box>
-        </div>
-      </Box>
+              )}
+            </Box>
+          </div>
+        </Box>
+      </div>
     </div>
   );
 }

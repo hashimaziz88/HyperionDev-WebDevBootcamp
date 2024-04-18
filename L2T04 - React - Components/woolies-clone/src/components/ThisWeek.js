@@ -29,7 +29,7 @@ const imageUrls2 = [
 
 function WooliesFeaturedPics() {
   return (
-    <div className="container2">
+    <div className="container">
       <div style={{ paddingTop: 25 }}>
         <Box sx={{ width: "100%" }}>
           <Typography variant="h5" sx={{ mb: 2 }}>

@@ -1,0 +1,20 @@
+.social-section {
+  display: flex; /* Make the social section a flex container */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Horizontally center the content */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+.social-section p {
+  margin-bottom: 10px; /* Add space between text and button */
+  text-align: center; /* Center align the text */
+}
+
+.social-section button {
+  background-color: #007bff; /* Example button color */
+  color: white;
+  padding: 10px 20px; /* Add padding to the button */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add some rounded corners */
+  cursor: pointer; /* Indicate clickable button */
+}

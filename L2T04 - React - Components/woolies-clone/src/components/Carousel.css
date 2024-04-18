@@ -1,5 +1,19 @@
 .container-carousel {
-    width: 100%;
-    padding-bottom: 150px;
-    background-color: #f7f7f7eb;
+  width: 80vw; /* Base width for all devices */
+  padding-bottom: 150px;
+  background-color: #f7f7f7eb;
+}
+
+@media (max-width: 768px) {
+  /* Styles for mobile devices */
+  .container-carousel {
+    width: 100%; /* Set width to 100% on mobile */
+    padding-bottom: 50px; /* Adjust padding for mobile layout */
   }
+}
+.hovering-icons {
+  position: absolute; /* Assumes the parent container has position: relative */
+  top: 50%;
+  transform: translateY(-50%); /* Center the icons vertically */
+  z-index: 1;  /* Ensure the icons are above the card content */
+}

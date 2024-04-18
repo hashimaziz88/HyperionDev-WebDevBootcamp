@@ -4,6 +4,7 @@ import "./HeaderMain.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PlaceIcon from "@mui/icons-material/Place";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { IconButton } from "@mui/material";
 
 function IconWithText({ icon: IconComponent, text, customSize }) {
   const componentStyles = {
@@ -34,13 +35,22 @@ function HeaderMain() {
             <img src={WoolworthsLogoWhite} alt="" />
           </div>
           <div className="icons-container">
-            <a href="">
-              <IconWithText icon={AccountCircleIcon} text="Sign in/Register" />
-            </a>
-            <a>
-              <IconWithText icon={PlaceIcon} text="Delivery Address" />
-            </a>
-            <IconWithText icon={ShoppingCartIcon} text="" customSize={28} />
+            <IconButton size="small">
+              <a>
+                <IconWithText
+                  icon={AccountCircleIcon}
+                  text="Sign in/Register"
+                />
+              </a>
+            </IconButton>
+            <IconButton size="small">
+              <a>
+                <IconWithText icon={PlaceIcon} text="Delivery Address" />
+              </a>
+            </IconButton >
+            <IconButton>
+              <IconWithText icon={ShoppingCartIcon} text="" customSize={28} />
+            </IconButton>
           </div>
         </div>
       </div>

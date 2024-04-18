@@ -26,63 +26,65 @@ const imageUrlsHorizontal = [
 
 function ThisWeekInWooliesSection() {
   return (
-    <div className="container2">
-      <Box sx={{ width: "100%" }}>
-        <Typography variant="h5" sx={{ mb: 2, paddingBottom:2 }}>
-          THIS WEEK IN WOOLIES
-        </Typography>
-        <Grid container spacing={2}>
-          {/* Two images stacked vertically */}
-          {imageUrlsVertical.map((imageUrl, index) => (
-            <Grid item xs={12} key={index}>
-              <Link href={imageUrl} underline="none">
+    <div className="container">
+      <div className="container2">
+        <Box sx={{ width: "100%" }}>
+          <Typography variant="h5" sx={{ mb: 2, paddingBottom: 2 }}>
+            THIS WEEK IN WOOLIES
+          </Typography>
+          <Grid container spacing={2}>
+            {/* Two images stacked vertically */}
+            {imageUrlsVertical.map((imageUrl, index) => (
+              <Grid item xs={12} key={index}>
+                <Link href={imageUrl} underline="none">
+                  <Card>
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        height="auto"
+                        image={imageUrl}
+                        alt={`This Week in Woolies Offer ${index + 1}`}
+                      />
+                    </CardActionArea>
+                  </Card>
+                </Link>
+              </Grid>
+            ))}
+            {/* Two images displayed horizontally */}
+            <Grid item xs={6}>
+              <Link href={imageUrlsHorizontal[0]} underline="none">
                 <Card>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       height="auto"
-                      image={imageUrl}
-                      alt={`This Week in Woolies Offer ${index + 1}`}
+                      image={imageUrlsHorizontal[0]}
+                      alt="This Week in Woolies Offer 3"
                     />
                   </CardActionArea>
                 </Card>
               </Link>
             </Grid>
-          ))}
-          {/* Two images displayed horizontally */}
-          <Grid item xs={6}>
-            <Link href={imageUrlsHorizontal[0]} underline="none">
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="auto"
-                    image={imageUrlsHorizontal[0]}
-                    alt="This Week in Woolies Offer 3"
-                  />
-                </CardActionArea>
-              </Card>
-            </Link>
+            <Grid item xs={6}>
+              <Link href={imageUrlsHorizontal[1]} underline="none">
+                <Card>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="auto"
+                      image={imageUrlsHorizontal[1]}
+                      alt="This Week in Woolies Offer 4"
+                    />
+                    <CardContent>
+                      {/* Optional content for each card */}
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Link>
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <Link href={imageUrlsHorizontal[1]} underline="none">
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="auto"
-                    image={imageUrlsHorizontal[1]}
-                    alt="This Week in Woolies Offer 4"
-                  />
-                  <CardContent>
-                    {/* Optional content for each card */}
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </div>
     </div>
   );
 }

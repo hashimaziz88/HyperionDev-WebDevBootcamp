@@ -10,13 +10,21 @@ const images = [
 
 function MyCarousel() {
   return (
-    <Carousel>
-      {images.map((image) => (
-        <Paper key={image} sx={{ width: "100%", height: 300 }}>
-          <img src={image} alt="" style={{ width: "100%", height: "100%" }} />
-        </Paper>
-      ))}
-    </Carousel>
+    <div className="container">
+      <div style={{padding:20}}>
+        <Carousel>
+          {images.map((image) => (
+            <Paper key={image} sx={{ width: "100%", height: 300 }}>
+              <img
+                src={image}
+                alt=""
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Paper>
+          ))}
+        </Carousel>
+      </div>
+    </div>
   );
 }
 

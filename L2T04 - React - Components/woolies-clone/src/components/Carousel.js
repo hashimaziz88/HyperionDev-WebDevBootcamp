@@ -259,6 +259,11 @@ function Carousel() {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
+  const moveTab = (newTab) => {
+    setCurrentPage(0);
+    setCurrentTab(newTab);
+  };
+
   // Function to handle previous page navigation
   const handlePrevPage = () => {
     setSlideDirection("right");
@@ -311,7 +316,7 @@ function Carousel() {
           {/* Tabs for different categories */}
           <Tabs
             value={currentTab}
-            onChange={(event, newValue) => setCurrentTab(newValue)}
+            onChange={(event, newValue) => moveTab(newValue)}
             centered
           >
             <Tab label="Clothing" />

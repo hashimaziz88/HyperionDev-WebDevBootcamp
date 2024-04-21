@@ -1,7 +1,13 @@
-import BankingApp from "./components/BankingApp.js";
+import React, { useState } from "react";
+import Balance from "./compoenents/Balance";
+import "./App.css";
 
-// Create the App component
 function App() {
-  return <BankingApp />;
+  return (
+    <div className="App">
+      <Balance />
+    </div>
+  );
 }
+
 export default App;

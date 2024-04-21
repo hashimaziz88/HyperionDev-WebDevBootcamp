@@ -41,3 +41,18 @@
     transform: rotate(360deg);
   }
 }
+.balance-container {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: auto;
+  text-align: center;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-left: 5px;
+}

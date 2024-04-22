@@ -1,23 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { TextField, Button, Typography, Container } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100vh",
-  },
-});
 
 function App() {
   const [name, setName] = useState("");
   const [nationality, setNationality] = useState("");
   const [certainty, setCertainty] = useState("");
   const inputRef = useRef(null);
-  const classes = useStyles();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -54,33 +41,26 @@ function App() {
   };
 
   return (
-    <Container className={classes.container}>
+    <div>
       <form onSubmit={handleSubmit}>
-        <TextField
+        <input
           type="text"
-          inputRef={inputRef}
+          ref={inputRef}
           value={name}
           onChange={handleChange}
           placeholder="Enter name"
-          variant="outlined"
-          margin="normal"
-          fullWidth
         />
-        <Button type="submit" variant="contained" color="primary">
-          Predict Nationality
-        </Button>
+        <button type="submit">Predict Nationality</button>
       </form>
       {nationality && certainty && (
         <div>
-          <Typography variant="h6" gutterBottom>
-            Result:
-          </Typography>
-          <Typography variant="body1" gutterBottom>
+          <h2>Result:</h2>
+          <p>
             {name} is from {nationality} with {certainty}% certainty.
-          </Typography>
+          </p>
         </div>
       )}
-    </Container>
+    </div>
   );
 }
 

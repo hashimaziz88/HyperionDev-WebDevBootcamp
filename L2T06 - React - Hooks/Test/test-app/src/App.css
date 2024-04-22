@@ -12,11 +12,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-/* App.css */
-.container {
-  text-align: center;
-  padding: 20px;
-}
 
 .App-header {
   background-color: #282c34;
@@ -40,12 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-input {
-  margin-bottom: 10px;
-}
-
-button {
-  margin-left: 5px;
 }

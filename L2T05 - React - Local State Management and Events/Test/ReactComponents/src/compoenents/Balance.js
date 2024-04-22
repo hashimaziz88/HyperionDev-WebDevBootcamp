@@ -8,10 +8,11 @@ import {
   Tab,
   Tabs,
 } from "@mui/material";
-import Navbar from "./Navbar"; // Import the Navbar component
-import AccountBalance from "./AccountBalance"; // Import the AccountBalance component
+import Navbar from "./Navbar";
+import AccountBalance from "./AccountBalance";
 
 const Balance = () => {
+  // State for managing balance and various inputs
   const [balance, setBalance] = useState(0);
   const [depositAmount, setDepositAmount] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
@@ -22,6 +23,7 @@ const Balance = () => {
   const [tabValue, setTabValue] = useState(0); // State for managing tabs
   const [transactions, setTransactions] = useState([]); // State for managing transactions
 
+  // Function to calculate expected balance based on inputs
   const calculateExpectedBalance = () => {
     let expectedBalance = balance;
     if (depositAmount !== "") {
@@ -33,12 +35,12 @@ const Balance = () => {
     return expectedBalance;
   };
 
+  // Functions to handle different actions: deposit, withdrawal, interest, fees
   const handleDeposit = () => {
     const amount = parseFloat(depositAmount);
     if (!isNaN(amount)) {
       setBalance((prevBalance) => prevBalance + amount);
       setDepositAmount("");
-      // Add deposit transaction to history
       setTransactions([...transactions, { type: "Deposit", amount }]);
     }
   };
@@ -48,7 +50,6 @@ const Balance = () => {
     if (!isNaN(amount) && balance - amount >= 0) {
       setBalance((prevBalance) => prevBalance - amount);
       setWithdrawAmount("");
-      // Add withdrawal transaction to history
       setTransactions([...transactions, { type: "Withdrawal", amount }]);
     } else {
       const negativeAmount = amount - balance;
@@ -61,11 +62,9 @@ const Balance = () => {
       ) {
         setBalance((prevBalance) => prevBalance - amount);
         setWithdrawAmount("");
-        // Add withdrawal transaction to history
         setTransactions([...transactions, { type: "Withdrawal", amount }]);
       } else {
         // User cancelled the withdrawal
-        // You can handle this case as per your application's logic
       }
     }
   };
@@ -73,37 +72,33 @@ const Balance = () => {
   const handleCustomInterest = () => {
     let rate = parseFloat(customInterestRate);
     if (isNaN(rate)) {
-      rate = 0; // Set default interest rate if input is empty or not a number
+      rate = 0;
     }
     const interest = (balance * rate) / 100;
     setBalance((prevBalance) => prevBalance + interest);
     setCustomInterestRate("");
-    // Add interest transaction to history
     setTransactions([...transactions, { type: "Interest", amount: interest }]);
   };
 
   const handleCustomFees = () => {
     let rate = parseFloat(customFeeRate);
     if (isNaN(rate)) {
-      rate = 0; // Set default fee rate if input is empty or not a number
+      rate = 0;
     }
     const fees = (balance * rate) / 100;
     setBalance((prevBalance) => prevBalance - fees);
     setCustomFeeRate("");
-    // Add fee transaction to history
     setTransactions([...transactions, { type: "Fee", amount: fees }]);
   };
 
   const handleFixedInterest = () => {
     const interest = (balance * fixedInterestRate) / 100;
     setBalance((prevBalance) => prevBalance + interest);
-    // Add interest transaction to history
     setTransactions([...transactions, { type: "Interest", amount: interest }]);
   };
 
   const handleFixedFees = () => {
     setBalance((prevBalance) => prevBalance - fixedFeeAmount);
-    // Add fee transaction to history
     setTransactions([...transactions, { type: "Fee", amount: fixedFeeAmount }]);
   };
 
@@ -274,6 +269,7 @@ const Balance = () => {
               Transaction History
             </Typography>
             <ul>
+              {/* Render transaction history */}
               {transactions.map((transaction, index) => (
                 <li key={index}>
                   {transaction.type}: R{transaction.amount.toFixed(2)}
@@ -288,4 +284,3 @@ const Balance = () => {
 };
 
 export default Balance;
-  

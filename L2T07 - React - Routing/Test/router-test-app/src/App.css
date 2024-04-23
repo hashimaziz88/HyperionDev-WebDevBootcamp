@@ -1,0 +1,10 @@
+/* App.css */
+.content {
+  padding-top: 20px;
+}
+
+.total-price {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}

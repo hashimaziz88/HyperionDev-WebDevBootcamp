@@ -12,17 +12,93 @@ const Products = () => {
   const products = [
     {
       id: 1,
-      name: "Product 1",
-      description: "Description for Product 1",
-      price: 10,
-      colors: ["Red", "Blue", "Green"],
+      name: "Elegant Leather Wallet",
+      description:
+        "Crafted from genuine leather, this wallet features a sleek design with ample space for cards and cash.",
+      price: 45,
+      colors: ["Brown", "Black", "Navy Blue"],
+      image: "https://via.placeholder.com/300/FF5733/FFFFFF?text=Wallet",
     },
     {
       id: 2,
-      name: "Product 2",
-      description: "Description for Product 2",
-      price: 15,
-      colors: ["Yellow", "Orange", "Pink"],
+      name: "Classic Analog Watch",
+      description:
+        "A timeless accessory for any occasion, this analog watch features a stainless steel case and leather strap.",
+      price: 80,
+      colors: ["Silver", "Gold", "Rose Gold"],
+      image: "https://via.placeholder.com/300/3C40C6/FFFFFF?text=Watch",
+    },
+    {
+      id: 3,
+      name: "Cozy Knit Sweater",
+      description:
+        "Stay warm and stylish with this cozy knit sweater, perfect for layering during the colder months.",
+      price: 60,
+      colors: ["Gray", "Burgundy", "Navy"],
+      image: "https://via.placeholder.com/300/6A5ACD/FFFFFF?text=Sweater",
+    },
+    {
+      id: 4,
+      name: "Portable Bluetooth Speaker",
+      description:
+        "Take your music anywhere with this portable Bluetooth speaker, delivering crisp sound quality in a compact design.",
+      price: 35,
+      colors: ["Black", "Red", "Blue"],
+      image: "https://via.placeholder.com/300/20B2AA/FFFFFF?text=Speaker",
+    },
+    {
+      id: 5,
+      name: "Professional Chef's Knife",
+      description:
+        "Slice and dice like a pro with this high-quality chef's knife, featuring a razor-sharp stainless steel blade.",
+      price: 50,
+      colors: ["Silver", "Black"],
+      image: "https://via.placeholder.com/300/FFA07A/FFFFFF?text=Knife",
+    },
+    {
+      id: 6,
+      name: "Stylish Aviator Sunglasses",
+      description:
+        "Shield your eyes from the sun in style with these classic aviator sunglasses, featuring UV protection lenses.",
+      price: 25,
+      colors: ["Gold", "Silver", "Black"],
+      image: "https://via.placeholder.com/300/778899/FFFFFF?text=Sunglasses",
+    },
+    {
+      id: 7,
+      name: "Comfortable Memory Foam Pillow",
+      description:
+        "Enjoy a restful night's sleep with this memory foam pillow, designed to provide optimal support and comfort.",
+      price: 30,
+      colors: ["White"],
+      image: "https://via.placeholder.com/300/FFFF00/FFFFFF?text=Pillow",
+    },
+    {
+      id: 8,
+      name: "Gourmet Coffee Sampler",
+      description:
+        "Explore a variety of gourmet coffee flavors with this sampler pack, perfect for coffee enthusiasts.",
+      price: 20,
+      colors: ["Brown"],
+      image: "https://via.placeholder.com/300/CD5C5C/FFFFFF?text=Coffee",
+    },
+    {
+      id: 9,
+      name: "Luxurious Bathrobe Set",
+      description:
+        "Wrap yourself in luxury with this plush bathrobe set, includes a soft robe and matching slippers.",
+      price: 70,
+      colors: ["White", "Gray", "Navy"],
+      image: "https://via.placeholder.com/300/800080/FFFFFF?text=Bathrobe",
+    },
+    {
+      id: 10,
+      name: "Modern Desk Lamp",
+      description:
+        "Illuminate your workspace with this modern desk lamp, featuring adjustable brightness settings.",
+      price: 40,
+      colors: ["Black", "White", "Silver"],
+      image: "https://via.placeholder.com/300/008080/FFFFFF?text=Lamp",
     },
   ];
 
@@ -36,7 +112,6 @@ const Products = () => {
       setTotalPrice(totalFromStorage);
     }
   }, []);
-
   const handleBuy = (price) => {
     if (!alertShow) {
       setTotalPrice((prevPrice) => {
@@ -104,7 +179,13 @@ const Products = () => {
         {products.map((product) => (
           <div key={product.id} className="col-lg-4 col-md-6 mb-4">
             <Card>
-              <Card.Img variant="top" src="https://via.placeholder.com/300" />
+              <a href="#">
+                <Card.Img
+                  variant="top"
+                  src={product.image}
+                  className="img-fluid"
+                />
+              </a>
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
@@ -115,14 +196,10 @@ const Products = () => {
                     id={`dropdown-basic-${product.id}`}
                     style={{
                       backgroundColor:
-                      //   selectedColors[product.id] === "Color"
-                      //     ? "secondary"
-                      //     : selectedColors[product.id] || "secondary",
-                      // color: "white",
-                      selectedColors[product.id] === undefined
-                      ? "secondary"
-                      : selectedColors[product.id],
-                  color: "white",
+                        selectedColors[product.id] === undefined
+                          ? "secondary"
+                          : selectedColors[product.id],
+                      color: "white",
                     }}
                   >
                     {selectedColors[product.id] || "Color"}
@@ -155,11 +232,6 @@ const Products = () => {
                       ...prevColors,
                       [product.id]: null,
                     }));
-
-                    // Reset the dropdown toggle color back to secondary
-                    document.getElementById(
-                      `dropdown-basic-${product.id}`
-                    ).style.backgroundColor = "secondary";
                   }}
                 >
                   Buy

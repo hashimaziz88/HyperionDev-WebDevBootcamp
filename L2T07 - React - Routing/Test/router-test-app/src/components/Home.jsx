@@ -1,27 +1,40 @@
-// Home.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import TotalPrice from "./TotalPrice";
 
-const Home = ({ setTotalPrice }) => {
-  const [userName, setUserName] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+const Home = () => {
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || ""
+  );
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem("loggedIn") === "true"
+  );
 
   const handleLogin = () => {
     if (userName.trim() !== "") {
       setLoggedIn(true);
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("loggedIn", true);
     }
   };
 
   const handleLogout = () => {
     setLoggedIn(false);
     setUserName("");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("loggedIn");
   };
 
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem("loggedIn");
+    if (loggedInStatus === "true") {
+      setLoggedIn(true);
+    }
+  }, []);
+
   return (
-    <div className="text-center">
+    <div className="text-center container">
       <h1>Welcome to Our Online Store!</h1>
-      
+
       <div className="mt-5">
         {loggedIn ? (
           <>

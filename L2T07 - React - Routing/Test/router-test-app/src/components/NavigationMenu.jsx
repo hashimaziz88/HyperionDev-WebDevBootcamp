@@ -37,6 +37,22 @@ const NavigationMenu = () => {
                 About
               </Link>
             </li>
+            {/* Login link */}
+            <li className="nav-item">
+              <Link className="nav-link" activeClassName="active" to="/login">
+                Login
+              </Link>
+            </li>
+            {/* Registration link */}
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                activeClassName="active"
+                to="/registration"
+              >
+                Registration
+              </Link>
+            </li>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

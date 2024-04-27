@@ -54,32 +54,17 @@ const Home = () => {
         <Col xs={12} md={6}>
           <Card>
             <Card.Body>
-              {loggedIn ? (
-                <>
-                  <h2>Welcome {userName}!</h2>
-                  <Button variant="danger" onClick={handleLogout}>
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <Form>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Enter Your Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter your name"
-                      value={userName}
-                      onChange={(e) => setUserName(e.target.value)}
-                    />
-                  </Form.Group>
-                  {nameEmpty && (
-                    <Alert variant="danger">Please enter your name.</Alert>
-                  )}
-                  <Button variant="primary" onClick={handleLogin}>
-                    Login
-                  </Button>
-                </Form>
-              )}
+              {" "}
+              <div>
+                <h2>
+                  For the purpose of this project L2T08 - React - Form
+                  Validation,
+                </h2>
+                <h2>
+                  the login page from L2T07 - React - Routing has been moved
+                </h2>
+                <h2>to the login tab as well as a registration tab added</h2>
+              </div>
             </Card.Body>
           </Card>
         </Col>

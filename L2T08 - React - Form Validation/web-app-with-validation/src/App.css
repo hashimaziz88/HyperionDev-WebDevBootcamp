@@ -1,0 +1,21 @@
+/* App.css */
+.content {
+  padding-top: 20px;
+}
+
+.total-price {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+container {
+  padding: 80px;
+  background-color: aqua;
+}
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2017/08/03/15/42/wall-2576917_1280.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

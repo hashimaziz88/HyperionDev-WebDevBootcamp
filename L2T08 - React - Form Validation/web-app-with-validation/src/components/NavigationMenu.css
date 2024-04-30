@@ -1,0 +1,17 @@
+.nav-link {
+  color: #333;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}

@@ -1,7 +1,7 @@
 // App.js
 import React from "react";
 import "./App.css";
-import BalanceManager from "./components2/BalanceManager";
+import BalanceManager from "./components/BalanceManager";
 
 function App() {
   return (

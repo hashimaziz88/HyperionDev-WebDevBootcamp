@@ -16,6 +16,7 @@ import "./BalanceManager.css";
 const BalanceManager = () => {
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -26,6 +27,22 @@ const BalanceManager = () => {
       dispatch({ type: "WITHDRAW", payload: withdrawAmount });
       setAmount("");
     }
+  };
+
+  const handleInterest = (dispatch, state) => {
+    if (state.balance < 0) {
+      setErrorMessage("Cannot apply interest to a negative balance.");
+      return;
+    }
+    dispatch({ type: "ADD_INTEREST" });
+  };
+
+  const handleCharges = (dispatch, state) => {
+    if (state.balance < 0) {
+      setErrorMessage("Cannot apply charges to a negative balance.");
+      return;
+    }
+    dispatch({ type: "CHARGES" });
   };
 
   return (
@@ -42,17 +59,18 @@ const BalanceManager = () => {
               Banking App
             </Card.Header>
             <Card.Body>
+              {errorMessage && <div className="error-message">{errorMessage}</div>}
               <Card.Text className="text-black">
                 {state.balance < 0 ? (
                   <>
                     <span>
-                      Balance is negative: -$ {Math.abs(state.balance)}
+                      Balance is negative: -R {Math.abs(state.balance)}
                     </span>
                     <br />
                     <span>Please deposit funds</span>
                   </>
                 ) : (
-                  `Current Balance: $${state.balance}`
+                  `Current Balance: R${state.balance}`
                 )}
               </Card.Text>
 
@@ -101,12 +119,12 @@ const BalanceManager = () => {
             <Card.Footer>
               <CustomButton
                 variant="primary"
-                onClick={() => dispatch({ type: "ADD_INTEREST" })}
+                onClick={() => handleInterest(dispatch, state)}
                 text="Add Interest (5%)"
               />
               <CustomButton
                 variant="primary"
-                onClick={() => dispatch({ type: "CHARGES" })}
+                onClick={() => handleCharges(dispatch, state)}
                 text="Apply Charges (15%)"
               />
             </Card.Footer>

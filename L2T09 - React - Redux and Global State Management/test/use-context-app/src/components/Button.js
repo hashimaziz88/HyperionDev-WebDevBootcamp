@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 const CustomButton = ({ onClick, variant, text }) => {
   return (
-    <Button variant={variant} onClick={onClick}>
+    <Button variant={variant} onClick={onClick} style={{ margin: 15 }}>
       {text}
     </Button>
   );

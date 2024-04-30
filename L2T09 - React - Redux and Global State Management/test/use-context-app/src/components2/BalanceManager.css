@@ -1,0 +1,13 @@
+/* BalanceManager.css */
+.balance-manager {
+  margin-top: 50px;
+}
+
+.balance {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.negative-balance {
+  background-color: #ffcccc; /* Light red */
+  color: white;
+}

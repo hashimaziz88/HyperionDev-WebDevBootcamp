@@ -1,9 +1,32 @@
-.custom-button {
-  margin-left: 20px;
+/* TodoItem.css */
+
+/* Styling for the todo item container */
+.todo-item {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space evenly between items */
+  padding: 10px; /* Add padding */
 }
 
-.todo-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Styling for the todo content section */
+.todo-content {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically */
+  margin: 10px; /* Add margin */
+}
+
+/* Styling for the complete button */
+.complete-button {
+  margin-right: 10px; /* Add right margin */
+}
+
+/* Styling for the action buttons section */
+.action-buttons {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align items vertically */
+}
+
+/* Adjustments for checkbox */
+.complete-button .form-check-input {
+  margin-right: 5px; /* Add right margin for checkbox */
 }

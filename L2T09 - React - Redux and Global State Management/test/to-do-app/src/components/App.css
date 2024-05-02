@@ -1,112 +1,130 @@
 /* General styling */
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #f0f0f0;
+  font-family: "Arial", sans-serif; /* Set font family */
+  background-color: #f0f0f0; /* Set background color */
 }
 
 .app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Styling for the main app container */
+  max-width: 600px; /* Set maximum width */
+  margin: 0 auto; /* Center align horizontally */
+  padding: 20px; /* Add padding */
+  position: relative; /* Set position */
+  background-color: #fff; /* Set background color */
+  border-radius: 10px; /* Add border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
+/* Styling for the todos section */
 .todos {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Add bottom margin */
 }
 
+/* Styling for individual todo items */
 .todo-item {
+  /* Flex layout for alignment and spacing */
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 15px;
-  background-color: #ffffcc;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
+  margin-bottom: 10px; /* Add bottom margin */
+  padding: 15px; /* Add padding */
+  background-color: #ffffcc; /* Set background color */
+  border: 1px solid #e6e6e6; /* Add border */
+  border-radius: 5px; /* Add border radius */
 }
 
 .todo-item .content {
+  /* Styling for todo item content */
   flex: 1; /* Take remaining space */
-  overflow: hidden; /* Prevent text overflow */
+  overflow: hidden; /* Hide overflow */
   white-space: nowrap; /* Prevent wrapping */
   text-overflow: ellipsis; /* Show ellipsis if overflow */
-  margin-right: 10px; /* Add spacing between content and buttons */
+  margin-right: 10px; /* Add right margin */
 }
 
 .todo-item.completed {
-  opacity: 0.5;
+  opacity: 0.5; /* Reduce opacity for completed todos */
 }
 
+/* Styling for popup content */
 .popup-content {
-  background-color: #f8f8f8;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 10px;
+  /* Styling for popup content */
+  background-color: #f8f8f8; /* Set background color */
+  padding: 20px; /* Add padding */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 5px; /* Add border radius */
+  margin-top: 10px; /* Add top margin */
 }
 
 .popup-content button {
-  margin-top: 10px;
+  /* Styling for buttons inside popup */
+  margin-top: 10px; /* Add top margin */
 }
 
 /* Counter styling */
 .counters {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 999;
+  /* Styling for counters section */
+  position: fixed; /* Fixed position */
+  top: 10px; /* Position from top */
+  right: 10px; /* Position from right */
+  z-index: 999; /* Set z-index */
 }
 
 .counter {
-  margin-bottom: 10px;
+  /* Styling for individual counter */
+  margin-bottom: 10px; /* Add bottom margin */
 }
 
 /* Legal pad themed styling */
 .app.legal-pad {
-  background-color: #fbf8ef;
+  /* Styling for legal pad theme */
+  background-color: #fbf8ef; /* Set background color */
 }
 
 .todo-item.legal-pad {
-  background-color: #fbf8ef;
-  border: 1px solid #e0dcca;
+  /* Styling for todo items in legal pad theme */
+  background-color: #fbf8ef; /* Set background color */
+  border: 1px solid #e0dcca; /* Add border */
 }
 
 .todo-item.completed.legal-pad {
-  opacity: 0.5;
-  background-color: #fbf8ef;
+  /* Styling for completed todo items in legal pad theme */
+  opacity: 0.5; /* Reduce opacity */
+  background-color: #fbf8ef; /* Set background color */
 }
 
 .todo-item .icon {
-  margin-right: 10px;
-  color: #999;
+  /* Styling for icons inside todo items */
+  margin-right: 10px; /* Add right margin */
+  color: #999; /* Set icon color */
 }
 
 .popup-content.legal-pad {
-  background-color: #fbf8ef;
-  border: 1px solid #e0dcca;
+  /* Styling for popup content in legal pad theme */
+  background-color: #fbf8ef; /* Set background color */
+  border: 1px solid #e0dcca; /* Add border */
 }
 
 .popup-content.legal-pad button {
-  margin-top: 10px;
-  background-color: #d3d3d3;
-  color: #333;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  /* Styling for buttons inside popup in legal pad theme */
+  margin-top: 10px; /* Add top margin */
+  background-color: #d3d3d3; /* Set background color */
+  color: #333; /* Set text color */
+  border: none; /* Remove border */
+  padding: 8px 15px; /* Add padding */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Set cursor */
 }
 
 .popup-content.legal-pad button:hover {
-  background-color: #bbb;
+  /* Styling for button hover state */
+  background-color: #bbb; /* Change background color on hover */
 }
 
 /* Ensure consistent box size */
 .todo-item,
 .completed-todo-item {
-  height: 60px; /* Adjust as needed */
-  margin: 20px;
+  /* Styling for consistent box size */
+  height: 60px; /* Set height */
+  margin: 20px; /* Add margin */
 }

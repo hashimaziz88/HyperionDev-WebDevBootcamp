@@ -1,0 +1,36 @@
+/* App.css */
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.todo-counter {
+  margin-bottom: 10px;
+}
+
+.todos {
+  margin-bottom: 20px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.todo-item.completed {
+  opacity: 0.5;
+}
+
+.popup-content {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.popup-content button {
+  margin-top: 10px;
+}

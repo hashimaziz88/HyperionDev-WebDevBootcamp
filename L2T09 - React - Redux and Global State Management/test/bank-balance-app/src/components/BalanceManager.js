@@ -9,45 +9,56 @@ import {
   Button,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CustomButton from "./Button";
-import GlobalState from "../store/GlobalState";
-import "./BalanceManager.css";
+import CustomButton from "./Button"; // Importing the CustomButton component
+import GlobalState from "../store/GlobalState"; // Importing the GlobalState context
+import "./BalanceManager.css"; // Importing custom CSS styles for BalanceManager
 
 const BalanceManager = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [amount, setAmount] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  // State variables using the useState hook
+  const [showModal, setShowModal] = useState(false); // State for showing/hiding the modal
+  const [amount, setAmount] = useState(""); // State for storing the amount input value
+  const [errorMessage, setErrorMessage] = useState(""); // State for storing error messages
 
+  // Function to close the modal
   const handleCloseModal = () => setShowModal(false);
+
+  // Function to show the modal
   const handleShowModal = () => setShowModal(true);
 
+  // Function to handle withdrawing money
   const handleWithdraw = (dispatch, amount) => {
-    const withdrawAmount = parseFloat(amount);
+    const withdrawAmount = parseFloat(amount); // Parse the input amount to a float
     if (!isNaN(withdrawAmount) && withdrawAmount > 0) {
-      dispatch({ type: "WITHDRAW", payload: withdrawAmount });
-      setAmount("");
+      dispatch({ type: "WITHDRAW", payload: withdrawAmount }); // Dispatching a withdrawal action
+      setAmount(""); // Clearing the amount input field
     }
   };
 
+  // Function to handle applying interest
   const handleInterest = (dispatch, state) => {
     if (state.balance < 0) {
+      // If balance is negative, set an error message
       setErrorMessage("Cannot apply interest to a negative balance.");
       return;
     }
-    dispatch({ type: "ADD_INTEREST" });
+    dispatch({ type: "ADD_INTEREST" }); // Dispatching an action to add interest
   };
 
+  // Function to handle applying charges
   const handleCharges = (dispatch, state) => {
     if (state.balance < 0) {
+      // If balance is negative, set an error message
       setErrorMessage("Cannot apply charges to a negative balance.");
       return;
     }
-    dispatch({ type: "CHARGES" });
+    dispatch({ type: "CHARGES" }); // Dispatching an action to apply charges
   };
 
   return (
     <GlobalState>
-      {({ state, dispatch }) => (
+      {(
+        { state, dispatch } // Rendering the GlobalState context and accessing state and dispatch functions
+      ) => (
         <Container className="d-flex justify-content-center align-items-center h-100">
           <Card
             style={{ width: "25rem" }}
@@ -59,7 +70,10 @@ const BalanceManager = () => {
               Banking App
             </Card.Header>
             <Card.Body>
-              {errorMessage && <div className="error-message">{errorMessage}</div>}
+              {/* Displaying error message if it exists */}
+              {errorMessage && (
+                <div className="error-message">{errorMessage}</div>
+              )}
               <Card.Text className="text-black">
                 {state.balance < 0 ? (
                   <>
@@ -74,6 +88,7 @@ const BalanceManager = () => {
                 )}
               </Card.Text>
 
+              {/* Form for entering amount */}
               <Form>
                 <Form.Group as={Row} controlId="formAmount">
                   <Form.Label column sm="4" className="text-black">
@@ -89,6 +104,7 @@ const BalanceManager = () => {
                     />
                   </Col>
                 </Form.Group>
+                {/* Buttons for depositing and withdrawing */}
                 <CustomButton
                   variant="success"
                   onClick={() => {
@@ -106,7 +122,7 @@ const BalanceManager = () => {
                     const withdrawAmount = parseFloat(amount);
                     if (!isNaN(withdrawAmount) && withdrawAmount > 0) {
                       if (state.balance - withdrawAmount < 0) {
-                        handleShowModal();
+                        handleShowModal(); // Show modal if withdrawing into negative balance
                       } else {
                         handleWithdraw(dispatch, amount);
                       }
@@ -117,11 +133,13 @@ const BalanceManager = () => {
               </Form>
             </Card.Body>
             <Card.Footer>
+              {/* Button to add interest */}
               <CustomButton
                 variant="primary"
                 onClick={() => handleInterest(dispatch, state)}
                 text="Add Interest (5%)"
               />
+              {/* Button to apply charges */}
               <CustomButton
                 variant="primary"
                 onClick={() => handleCharges(dispatch, state)}
@@ -130,6 +148,7 @@ const BalanceManager = () => {
             </Card.Footer>
           </Card>
 
+          {/* Modal for confirming withdrawal from negative balance */}
           <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
               <Modal.Title>Confirm Withdrawal</Modal.Title>

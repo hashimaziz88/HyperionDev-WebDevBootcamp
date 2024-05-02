@@ -10,20 +10,29 @@ const InfoPopup = () => {
   };
 
   return (
-    <div className="info-popup">
-      <Button variant="info" onClick={togglePopup}>Info</Button>
+    <>
+      <Button variant="info" onClick={togglePopup} style={{ margin: "20px" }}>
+        Info
+      </Button>
       <Modal show={showPopup} onHide={togglePopup}>
         <Modal.Header closeButton>
           <Modal.Title>Instructions</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Add your todos using the input field above. You can delete todos by clicking the delete button.</p>
+          <p>
+            Add your to-dos using the input field below. You can delete to-dos
+            by clicking the delete button. Edit them using the edit button.
+            Clicking the checkbox or pressing the complete button moves the
+            to-do item to the completed section.
+          </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={togglePopup}>Close</Button>
+          <Button variant="secondary" onClick={togglePopup}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 

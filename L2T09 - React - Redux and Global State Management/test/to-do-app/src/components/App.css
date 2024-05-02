@@ -1,12 +1,17 @@
-/* App.css */
+/* General styling */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+}
+
 .app {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.todo-counter {
-  margin-bottom: 10px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .todos {
@@ -15,8 +20,21 @@
 
 .todo-item {
   display: flex;
-  align-items: center;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between;
   margin-bottom: 10px;
+  padding: 15px;
+  background-color: #ffffcc;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.todo-item .content {
+  flex: 1; /* Take remaining space */
+  overflow: hidden; /* Prevent text overflow */
+  white-space: nowrap; /* Prevent wrapping */
+  text-overflow: ellipsis; /* Show ellipsis if overflow */
+  margin-right: 10px; /* Add spacing between content and buttons */
 }
 
 .todo-item.completed {
@@ -33,4 +51,62 @@
 
 .popup-content button {
   margin-top: 10px;
+}
+
+/* Counter styling */
+.counters {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+}
+
+.counter {
+  margin-bottom: 10px;
+}
+
+/* Legal pad themed styling */
+.app.legal-pad {
+  background-color: #fbf8ef;
+}
+
+.todo-item.legal-pad {
+  background-color: #fbf8ef;
+  border: 1px solid #e0dcca;
+}
+
+.todo-item.completed.legal-pad {
+  opacity: 0.5;
+  background-color: #fbf8ef;
+}
+
+.todo-item .icon {
+  margin-right: 10px;
+  color: #999;
+}
+
+.popup-content.legal-pad {
+  background-color: #fbf8ef;
+  border: 1px solid #e0dcca;
+}
+
+.popup-content.legal-pad button {
+  margin-top: 10px;
+  background-color: #d3d3d3;
+  color: #333;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content.legal-pad button:hover {
+  background-color: #bbb;
+}
+
+/* Ensure consistent box size */
+.todo-item,
+.completed-todo-item {
+  height: 60px; /* Adjust as needed */
+  margin: 20px;
 }

@@ -1,0 +1,9 @@
+.custom-button {
+  margin-left: 20px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

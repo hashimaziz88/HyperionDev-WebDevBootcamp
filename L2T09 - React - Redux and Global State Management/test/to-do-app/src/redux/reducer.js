@@ -1,4 +1,5 @@
 // reducer.js
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -6,6 +7,7 @@ const initialState = {
     { id: 1, content: "Content1", completed: false },
     { id: 2, content: "Content2", completed: false },
   ],
+  completedList: [],
 };
 
 const todoReducer = createSlice({
@@ -30,6 +32,10 @@ const todoReducer = createSlice({
       const index = state.list.findIndex((todo) => todo.id === action.payload);
       if (index !== -1) {
         state.list[index].completed = !state.list[index].completed;
+        if (state.list[index].completed) {
+          const completedTodo = state.list.splice(index, 1)[0];
+          state.completedList.push(completedTodo);
+        }
       }
     },
   },

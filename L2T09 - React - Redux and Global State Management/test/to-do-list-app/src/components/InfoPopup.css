@@ -1,0 +1,20 @@
+/* InfoPopup.css */
+
+/* Styling for the container of the InfoPopup component */
+.info-popup {
+  position: relative; /* Set position relative */
+  margin-top: 20px; /* Add top margin */
+}
+
+/* Styling for the content of the InfoPopup */
+.popup-content {
+  position: absolute; /* Set position absolute */
+  top: 40px; /* Position from the top */
+  left: 0; /* Position from the left */
+  right: 0; /* Position from the right */
+  background-color: #fff; /* Set background color */
+  border: 1px solid #ccc; /* Add border */
+  padding: 10px; /* Add padding */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}

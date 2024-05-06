@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Child1 component snapshot 1`] = `
+<div
+  className="container"
+>
+  <p />
+  <button
+    onClick={[Function]}
+  >
+    change
+  </button>
+</div>
+`;

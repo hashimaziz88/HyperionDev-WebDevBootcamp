@@ -1,10 +1,10 @@
 // src/components/CartPage.js
-import React from 'react';
+import React from "react";
 
 const CartPage = () => {
   return (
     <div>
-      {/* Display cart items and total cost */}
+      <h1>CartPage</h1>{" "}
     </div>
   );
 };

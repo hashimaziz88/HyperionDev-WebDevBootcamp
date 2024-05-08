@@ -1,4 +1,3 @@
-// src/App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -10,7 +9,6 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      {/* // ADD OTHER COMPONENTS HERE */}
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductPage />} />

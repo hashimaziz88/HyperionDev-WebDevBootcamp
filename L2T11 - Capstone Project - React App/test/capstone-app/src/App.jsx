@@ -4,6 +4,9 @@ import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import ProductPage from "./components/ProductPage";
 import CartPage from "./components/CartPage";
+import LoginForm from "./components/LoginForm";
+import RegistrationForm from "./components/RegistrationForm";
+import LoggedInScreen from "./components/LoggedInScreen";
 
 export default function App() {
   return (
@@ -13,6 +16,9 @@ export default function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route exact path="/login" element={<LoginForm />} />
+        <Route exact path="/register" element={<RegistrationForm />} />
+        <Route exact path="/logged-in" element={<LoggedInScreen />} />
       </Routes>
     </div>
   );

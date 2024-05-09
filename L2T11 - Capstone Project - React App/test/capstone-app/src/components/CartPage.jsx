@@ -37,6 +37,10 @@ const CartPage = () => {
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">{`$${item.price}`}</p>
                 <p className="card-text">{item.color}</p>
+                {/* Display the total price for the item */}
+                <p className="card-text">{`Total: $${
+                  item.price * item.quantity
+                }`}</p>
                 <div className="d-flex align-items-center justify-content-between">
                   {/* Quantity Adjustment */}
                   <div>

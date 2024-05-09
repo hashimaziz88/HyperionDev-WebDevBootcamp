@@ -1,0 +1,5 @@
+> mkdir my_first_module
+> cd my_first_module
+> npm init
+> npm run work
+> npm run sleep

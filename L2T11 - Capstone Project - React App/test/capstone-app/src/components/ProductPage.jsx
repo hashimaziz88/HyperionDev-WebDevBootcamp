@@ -1,9 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Card, Button, Dropdown, Alert } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Card, Button, Dropdown, Alert, Col } from "react-bootstrap"; // Add Col component from react-bootstrap
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
-import TotalPrice from "./TotalPrice"; // Import TotalPrice component
+import TotalPrice from "./TotalPrice";
+
+// Import TotalPrice component
 
 const Products = () => {
   // State variables
@@ -143,13 +144,17 @@ const Products = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ padding: "20px" }}>
       {/* Component to display total price */}
-      <TotalPrice />
-      <h1 className="text-center">Products Page</h1>
+      <TotalPrice />{" "}
+      <h1 className="container" style={{ padding: "20px" }}>
+        Products Page
+      </h1>
       <div className="row justify-content-center">
         {products.map((product) => (
-          <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+          <Col key={product.id} lg={3} md={4} sm={6} xs={12} className="mb-4">
+            {" "}
+            {/* Adjust the number of columns and the size of the card */}
             <Card className="h-100">
               <Card.Img
                 variant="top"
@@ -202,7 +207,7 @@ const Products = () => {
                   )}
               </Card.Body>
             </Card>
-          </div>
+          </Col>
         ))}
       </div>
     </div>

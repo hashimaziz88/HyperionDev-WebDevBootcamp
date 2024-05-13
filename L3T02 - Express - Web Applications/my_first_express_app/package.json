@@ -1,0 +1,15 @@
+{
+  "name": "my_first_express_app",
+  "version": "1.0.0",
+  "description": "My first Express.js application",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

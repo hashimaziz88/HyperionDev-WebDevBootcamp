@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+  </head>
+  <body>
+    <h1>About Us</h1>
+    <div id="person-info"></div>
+    <a href="/">Home</a>
+    <script>
+      fetch("/person")
+        .then((response) => response.json())
+        .then((data) => {
+          const personInfo = document.getElementById("person-info");
+          personInfo.innerHTML = `
+                    <p>Name: ${data.name}</p>
+                    <p>Email: ${data.email}</p>
+                    <p>Gender: ${data.gender}</p>
+                `;
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>

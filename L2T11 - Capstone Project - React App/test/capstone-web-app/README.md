@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Available Scripts
+
+Please delete any previous node_modules folder before proceeding and enter into the CLI
+
+### `npm install`
+
+thereafter
+
 ### `npm start`
 
 Runs the app in the development mode.\

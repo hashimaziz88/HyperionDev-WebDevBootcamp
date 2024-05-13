@@ -3,7 +3,7 @@
 Welcome to my personal repository showcasing the projects and coursework completed during my Full Stack Web Development Bootcamp.
 
 ## Curriculum Highlights
-
+![Ranking-page-001](https://github.com/hashimaziz88/HyperionDev-WebDevBootcamp/assets/78796582/b4efd053-3a8c-49ae-a9f0-c3ea8aa2898b)
 ### Level 1: Programming and Web Development Basics
 - Introduction to programming essentials
 - Comprehensive web development
@@ -35,7 +35,7 @@ Welcome to my personal repository showcasing the projects and coursework complet
    - Backend development using Express.js.
    - Web applications with RESTful APIs.
    - Achieved an impressive 99% average grade and Top position in class.
-![Ranking-page-001](https://github.com/hashimaziz88/HyperionDev-WebDevBootcamp/assets/78796582/b4efd053-3a8c-49ae-a9f0-c3ea8aa2898b)
+
 
 ## Get Started
 Explore the code and learn from it! You can find detailed information about each project in their respective directories.

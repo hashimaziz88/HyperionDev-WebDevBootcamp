@@ -6,12 +6,21 @@
     <title>Landing Page</title>
   </head>
   <body>
-    <h1>Welcome to Our Website!</h1>
+    <script>
+      fetch("/person")
+        .then((response) => response.json())
+        .then((data) => {
+          const welcomeMessage = document.getElementById("welcome-message");
+          welcomeMessage.innerHTML = `<p>Welcome, ${data.name}!</p>`;
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
     <p>Feel free to explore:</p>
     <ul>
       <li><a href="/about">About Us</a></li>
       <li><a href="/contact">Contact Us</a></li>
       <li><a href="/error">Error Page</a></li>
     </ul>
+    <div id="welcome-message"></div>
   </body>
 </html>

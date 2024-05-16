@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // ! [IMPORTANT]: Replace with your mongoDB URI string. You can get it from your Atlas cluster.
-const uri = "mongodb://hyperionDB:password@hyperion-shard-00-00-f78fc.m..."
+const uri = "mongodb+srv://azizmuhammadhashim6:ed84vt0zXmKqYKsy@cluster-blog.ojv0v1j.mongodb.net/"
 
 // Connect to the database
 mongoose.Promise = global.Promise;

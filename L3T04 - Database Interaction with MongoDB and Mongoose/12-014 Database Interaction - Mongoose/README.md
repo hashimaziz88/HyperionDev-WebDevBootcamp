@@ -1,12 +1,12 @@
 # Testing the Blog API Using Postman
 
-This repository contains a simple Express.js API for managing blog posts with MongoDB using Mongoose. 
+This repository contains a simple Express.js API for managing blog posts with MongoDB using Mongoose.
 To test the API endpoints, you can use Postman, a popular tool for testing APIs.
 
 ## Getting Started
 
-1. Open the terminal 
-2. Install the dependencies using 
+1. Open the terminal
+2. Install the dependencies using
 
 ```
 npm install
@@ -32,7 +32,7 @@ The server will also connect to your MongoDB database.
 
 ### 1. Create a New Blog
 
-- Set the request method to POST 
+- Set the request method to POST
 - Set the request URL to http://localhost:8080/blogs/add
 - Click the 'Send' button
 - View the response in the 'Body' tab
@@ -61,5 +61,6 @@ The server will also connect to your MongoDB database.
 - Send a 'Get All Blogs' request to see the updated list of blogs
 
 ## Notes
+
 - Ensure the MongoDB URI in server.js is properly configured.
 - Ensure that you have Postman's Desktop Agent installed and enabled so that you can make requests to a local server.

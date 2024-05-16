@@ -14,7 +14,7 @@ npm install
 
 3. Change the MongoDB connection string (URI variable) in the server.js file (line 16) to your own connection string. You can get it from your Atlas cluster.
 
-4. Start the server using 
+4. Start the server using
 
 ```
 npm start

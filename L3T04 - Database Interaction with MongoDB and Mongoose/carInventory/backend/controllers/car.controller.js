@@ -1,5 +1,5 @@
 // controllers/car.controller.js
-const Car = require('../models/car.model');
+const Car = require("../models/car.model");
 
 exports.createCar = async (req, res) => {
   try {
@@ -13,7 +13,9 @@ exports.createCar = async (req, res) => {
 
 exports.updateCar = async (req, res) => {
   try {
-    const updatedCar = await Car.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedCar = await Car.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     res.json(updatedCar);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -33,7 +35,7 @@ exports.updateMultipleCars = async (req, res) => {
 exports.deleteCar = async (req, res) => {
   try {
     await Car.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Car deleted' });
+    res.json({ message: "Car deleted" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -50,10 +52,11 @@ exports.getAllCars = async (req, res) => {
 
 exports.getCarsOlderThanFiveYears = async (req, res) => {
   try {
-    const cars = await Car.find({ year: { $lt: new Date().getFullYear() - 5 } }, 'model make registrationNumber owner');
-    const cars2 = await Car.where(x => x.year > new Date().getFullYear() - 5);
-
-    res.json(cars2);
+    const cars = await Car.find(
+      { year: { $lt: new Date().getFullYear() - 5 } },
+      "model make registrationNumber owner"
+    );
+    res.json(cars);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

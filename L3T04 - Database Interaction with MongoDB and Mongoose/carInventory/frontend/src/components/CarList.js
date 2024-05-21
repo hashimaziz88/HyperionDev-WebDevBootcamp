@@ -1,9 +1,10 @@
 // src/components/CarList.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CarItem from "./CarItem";
 
-const CarList = () => {
-  const [cars, setCars] = useState([]);
+const CarList = ({ cars, setCars }) => {
+  // const [cars, setCars] = useState([]);
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -16,17 +17,27 @@ const CarList = () => {
     };
 
     fetchCars();
-  }, []);
+  }, [setCars]);
+
+  const handleDelete = (id) => {
+    setCars(cars.filter((car) => car._id !== id));
+  };
+
+  const handleUpdate = (updatedCar) => {
+    setCars(cars.map((car) => (car._id === updatedCar._id ? updatedCar : car)));
+  };
 
   return (
     <div>
       <h2>Car List</h2>
       <ul>
         {cars.map((car) => (
-          <li key={car._id}>
-            {car.make} {car.model} - {car.registrationNumber} (Owner:{" "}
-            {car.owner})
-          </li>
+          <CarItem
+            key={car._id}
+            car={car}
+            onDelete={handleDelete}
+            onUpdate={handleUpdate}
+          />
         ))}
       </ul>
     </div>

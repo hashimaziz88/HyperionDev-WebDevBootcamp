@@ -1,0 +1,41 @@
+/* src/components/CarItem.css */
+
+.car-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .car-details {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .car-buttons {
+    margin-top: 10px;
+  }
+  
+  .car-button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .car-button.edit {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .car-button.delete {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .car-button:hover {
+    opacity: 0.8;
+  }
+  

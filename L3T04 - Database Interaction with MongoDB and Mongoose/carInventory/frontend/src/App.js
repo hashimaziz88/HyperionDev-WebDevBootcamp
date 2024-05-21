@@ -1,8 +1,8 @@
-// src/App.js
 import React, { useState } from "react";
 import CarForm from "./components/CarForm";
-import CarList from "./components/CarList";
-import axios from "axios";
+import CarList from "./components/CarList"; // Corrected import path
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css"; // Import toastify CSS
 
 const App = () => {
   const [cars, setCars] = useState([]);

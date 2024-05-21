@@ -1,0 +1,55 @@
+/* src/components/UpdateCarForm.css */
+
+.update-car-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.update-car-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.update-car-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-car-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-car-button.save {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.update-car-button.cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.update-car-button:hover {
+  opacity: 0.8;
+}

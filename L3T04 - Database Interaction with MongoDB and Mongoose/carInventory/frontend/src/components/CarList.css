@@ -1,0 +1,33 @@
+/* src/components/CarList.css */
+
+.car-list-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .car-list-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .car-list-filter {
+    margin-bottom: 20px;
+  }
+  
+  .car-select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .car-select:focus {
+    outline: none;
+  }
+  
+  .car-item-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  

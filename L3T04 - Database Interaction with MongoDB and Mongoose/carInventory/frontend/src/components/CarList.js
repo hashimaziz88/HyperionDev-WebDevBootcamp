@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CarItem from "./CarItem";
+import "./CarList.css"; // Import CSS file
 
 const CarList = ({ cars, setCars }) => {
   const [selectOptions, setOptions] = useState("All");
@@ -35,17 +36,23 @@ const CarList = ({ cars, setCars }) => {
     selectOptions === "All"
       ? cars
       : cars.filter((car) => car.year < new Date().getFullYear() - 5);
+
   return (
-    <div>
-      <h2>Car List</h2>
-      <label for="time-filter">Filter Cars: </label>
-
-      <select name="car-list" id="car-select" onChange={handleFilter}>
-        <option value="All">All Cars</option>
-        <option value="Older Cars">Cars older than 5 years</option>
-      </select>
-
-      <ul>
+    <div className="car-list-container">
+      <h2 className="car-list-header">Car List</h2>
+      <div className="car-list-filter">
+        <label htmlFor="car-select">Filter Cars:</label>
+        <select
+          className="car-select"
+          name="car-list"
+          id="car-select"
+          onChange={handleFilter}
+        >
+          <option value="All">All Cars</option>
+          <option value="Older Cars">Cars older than 5 years</option>
+        </select>
+      </div>
+      <ul className="car-item-list">
         {filteredData.map((car) => (
           <CarItem
             key={car._id}

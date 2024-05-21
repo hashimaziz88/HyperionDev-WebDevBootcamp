@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Car Inventory Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the frontend of the Car Inventory web application, built using React.js. It allows users to manage a collection of cars, including adding new cars, updating car information, deleting cars, and viewing the list of cars.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+Follow these instructions to set up and run the frontend of the Car Inventory application.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Make sure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js
+- npm (Node Package Manager)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Navigate to the project directory:
 
-### `npm run build`
+   ```bash
+   cd frontend
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
 
-### `npm run eject`
+1. Start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. The development server will start running at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### CarForm
 
-## Learn More
+- **Description:** Component for adding a new car to the inventory.
+- **Features:**
+  - Form fields for entering car details.
+  - Form submission to add a new car.
+  - Error handling and notifications for success/failure.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### CarItem
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Description:** Component to display individual car details and options for editing or deleting a car.
+- **Features:**
+  - Display car details.
+  - Buttons to edit or delete a car.
+  - Toggle between editing mode and display mode.
 
-### Code Splitting
+### CarList
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Description:** Component to display the list of cars.
+- **Features:**
+  - Filter options to display all cars or cars older than five years.
+  - Display each car using the `CarItem` component.
+  - Fetch cars data from the backend API.
 
-### Analyzing the Bundle Size
+### UpdateCarForm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Description:** Component for updating car details.
+- **Features:**
+  - Form fields for editing car details.
+  - Form submission to update car information.
+  - Cancel button to exit editing mode.
 
-### Making a Progressive Web App
+## App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Description:** Main component to render the entire application.
+- **Features:**
+  - Renders `CarForm` for adding new cars.
+  - Renders `CarList` to display the list of cars.
 
-### Advanced Configuration
+## Libraries Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **axios:** For making HTTP requests to the backend API.
+- **react-toastify:** For displaying notifications.
+- **react:** For building user interfaces.
+- **react-dom:** For rendering React components.
+- **react-scripts:** For running the development server.
 
-### Deployment
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+car-inventory-frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── CarForm.js
+│   │   ├── CarItem.js
+│   │   ├── CarList.js
+│   │   └── UpdateCarForm.js
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+├── .gitignore
+├── package.json
+└── README.md
+```
 
-### `npm run build` fails to minify
+- **`public/`**: Contains static assets and the HTML template.
+- **`src/`**: Contains the source code of the application.
+  - **`components/`**: Contains React components.
+  - **`App.js`**: Main component to render the application.
+  - **`index.js`**: Entry point of the application.
+  - **`index.css`**: Global CSS styles.
+- **`.gitignore`**: Specifies intentionally untracked files to ignore.
+- **`package.json`**: Dependency and script configuration file.
+- **`README.md`**: Project documentation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Authors
+
+- Hashim Aziz Muhammad
+
+## Acknowledgments
+
+- [OpenAI](https://openai.com) for providing AI-powered assistance.
+- React community for developing a powerful frontend library.
+- [axios](https://axios-http.com/) for making HTTP requests.
+- [react-toastify](https://fkhadra.github.io/react-toastify/) for displaying notifications.

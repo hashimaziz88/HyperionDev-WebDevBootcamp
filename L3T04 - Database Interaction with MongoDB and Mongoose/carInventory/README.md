@@ -31,7 +31,6 @@ car-inventory/
 │   ├── .gitignore
 │   ├── package.json
 │   └── README.md
-├── LICENSE
 └── README.md
 ```
 

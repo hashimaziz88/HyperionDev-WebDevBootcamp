@@ -15,9 +15,9 @@ const UpdateCarForm = ({ car, onUpdate, onCancel }) => {
 
   // Function to handle form submission for updating car
   const handleUpdate = async (e) => {
-    e.preventDefault(); // Prevent form submission
-    if (loading) return; // Prevent submitting while loading
-    setLoading(true); // Set loading state to true during form submission
+    e.preventDefault(); // Prevent default form submission behavior
+    if (loading) return; // Prevent submitting if already loading
+    setLoading(true); // Set loading state to true
     try {
       // Send a PUT request to update the car data on the server
       const response = await axios.put(
@@ -31,7 +31,7 @@ const UpdateCarForm = ({ car, onUpdate, onCancel }) => {
       // Display a success message
       toast.success("Car updated successfully!");
     } catch (error) {
-      console.error(error);
+      console.error(error); // Log any errors to the console
       // Display an error message if the request fails
       toast.error("Failed to update car");
     } finally {
@@ -42,7 +42,7 @@ const UpdateCarForm = ({ car, onUpdate, onCancel }) => {
   return (
     // Form for updating car details
     <form className="update-car-form" onSubmit={handleUpdate}>
-      {/* Input fields for updating car details */}
+      {/* Input field for updating car make */}
       <div className="form-group">
         <label htmlFor="make">Make: </label>
         <input
@@ -54,7 +54,55 @@ const UpdateCarForm = ({ car, onUpdate, onCancel }) => {
           required
         />
       </div>
-      {/* Similar structure for other input fields */}
+      {/* Input field for updating car model */}
+      <div className="form-group">
+        <label htmlFor="model">Model: </label>
+        <input
+          className="update-car-input"
+          name="model"
+          value={editedCar.model}
+          onChange={handleChange}
+          placeholder="Model"
+          required
+        />
+      </div>
+      {/* Input field for updating car registration number */}
+      <div className="form-group">
+        <label htmlFor="registrationNumber">Registration Number: </label>
+        <input
+          className="update-car-input"
+          name="registrationNumber"
+          value={editedCar.registrationNumber}
+          onChange={handleChange}
+          placeholder="Registration Number"
+          required
+        />
+      </div>
+      {/* Input field for updating car owner */}
+      <div className="form-group">
+        <label htmlFor="owner">Owner: </label>
+        <input
+          className="update-car-input"
+          name="owner"
+          value={editedCar.owner}
+          onChange={handleChange}
+          placeholder="Owner"
+          required
+        />
+      </div>
+      {/* Input field for updating car year */}
+      <div className="form-group">
+        <label htmlFor="year">Year: </label>
+        <input
+          className="update-car-input"
+          name="year"
+          type="number" // Set input type to number
+          value={editedCar.year}
+          onChange={handleChange}
+          placeholder="Year"
+          required
+        />
+      </div>
       {/* Buttons for saving changes and canceling */}
       <div className="button-group">
         {/* Button to save changes */}
@@ -64,7 +112,7 @@ const UpdateCarForm = ({ car, onUpdate, onCancel }) => {
           disabled={loading} // Disable button during loading
         >
           {loading ? "Saving..." : "Save"}{" "}
-          {/* Change button text during loading */}
+          {/* Change button text based on loading state */}
         </button>
         {/* Button to cancel editing */}
         <button

@@ -4,7 +4,7 @@ import axios from "axios";
 import CarItem from "./CarItem";
 
 const CarList = ({ cars, setCars }) => {
-  // const [cars, setCars] = useState([]);
+  const [selectOptions, setOptions] = useState("All");
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -27,11 +27,26 @@ const CarList = ({ cars, setCars }) => {
     setCars(cars.map((car) => (car._id === updatedCar._id ? updatedCar : car)));
   };
 
+  const handleFilter = (event) => {
+    setOptions(event.target.value);
+  };
+
+  const filteredData =
+    selectOptions === "All"
+      ? cars
+      : cars.filter((car) => car.year < new Date().getFullYear() - 5);
   return (
     <div>
       <h2>Car List</h2>
+      <label for="time-filter">Filter Cars: </label>
+
+      <select name="car-list" id="car-select" onChange={handleFilter}>
+        <option value="All">All Cars</option>
+        <option value="Older Cars">Cars older than 5 years</option>
+      </select>
+
       <ul>
-        {cars.map((car) => (
+        {filteredData.map((car) => (
           <CarItem
             key={car._id}
             car={car}

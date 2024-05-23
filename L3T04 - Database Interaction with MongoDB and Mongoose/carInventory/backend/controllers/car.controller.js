@@ -31,21 +31,6 @@ exports.updateCar = async (req, res) => {
   }
 };
 
-// Function to update multiple car entries based on a filter
-exports.updateMultipleCars = async (req, res) => {
-  try {
-    // Destructure the filter and update objects from the request body
-    const { filter, update } = req.body;
-    // Update multiple cars that match the filter with the update data
-    const result = await Car.updateMany(filter, update);
-    // Respond with the result of the update operation
-    res.json(result);
-  } catch (error) {
-    // If there's an error, respond with status 400 (Bad Request) and the error message
-    res.status(400).json({ message: error.message });
-  }
-};
-
 // Function to delete a car entry by its ID
 exports.deleteCar = async (req, res) => {
   try {

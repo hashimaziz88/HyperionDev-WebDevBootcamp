@@ -1,14 +1,20 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config();
+
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 app.get("/resource", (req, res) => {
   const auth = req.headers["authorization"];
   const token = auth.split(" ")[1];
   try {
-    const decoded = jwt.verify(token, "jwt-secret");
+    const decoded = jwt.verify(token, JWT_SECRET);
     res.send({
       msg: `Hello, ${decoded.name}! Your JSON Web Token has been verified.`,
     });
@@ -20,7 +26,7 @@ app.get("/resource", (req, res) => {
 app.get("/admin_resource", (req, res) => {
   const token = req.headers["authorization"].split(" ")[1];
   try {
-    const decoded = jwt.verify(token, "jwt-secret");
+    const decoded = jwt.verify(token, JWT_SECRET);
     if (decoded.admin) {
       res.send({ msg: "Success!" });
     } else {
@@ -46,7 +52,7 @@ app.post("/login", (req, res) => {
       name: usr,
       admin: true,
     };
-    const token = jwt.sign(JSON.stringify(payload), "jwt-secret", {
+    const token = jwt.sign(JSON.stringify(payload), JWT_SECRET, {
       algorithm: "HS256",
     });
     res.send({ token: token });

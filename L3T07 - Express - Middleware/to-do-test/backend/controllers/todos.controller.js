@@ -8,7 +8,7 @@ exports.create = async (req, res) => {
       todo_id: req.body.todo_id,
       todo_name: req.body.todo_name,
       todo_description: req.body.todo_description,
-      user_id: req.body.user_id
+      user_id: req.body.user_id,
     });
 
     const saveTodo = await todoModel.save();
@@ -59,7 +59,7 @@ exports.updateById = async (req, res) => {
     );
 
     if (updatedTodo) {
-      res.status(200);
+      res.status(200).send(updatedTodo);
     } else {
       res.status(404).send({ message: "Todo not found" });
     }

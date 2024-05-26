@@ -7,7 +7,7 @@ const todoTooLargeMiddleware = (req, res, next) => {
 
   try {
     if (todo_name.length > 140 || todo_description.length > 140) {
-      res.status(400).send({ message: "400 Todo description is far too long" });
+      res.status(400).send("400 Todo description is far too long");
     } else {
       next();
     }

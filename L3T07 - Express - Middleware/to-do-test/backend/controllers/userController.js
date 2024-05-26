@@ -23,7 +23,7 @@ exports.login = async (req, res) => {
     }
     const token = jwt.sign({ userId: user._id }, "your_jwt_secret");
     res.json({ token, user: { username: user.username, _id: user._id.valueOf() } });
-  } catch (error) {
+  } catch (error) { 
     res.status(500).send("Error logging in");``
   }
 };

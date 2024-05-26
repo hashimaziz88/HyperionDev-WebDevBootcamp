@@ -14,16 +14,6 @@ const Login = ({
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (token && user) {
-      setToken(token);
-      setUser(user);
-      setIsAuthenticated(true);
-    }
-  }, [setToken, setUser, setIsAuthenticated]);
-
   const handleLogout = () => {
     setToken("");
     setUser("");

@@ -7,29 +7,26 @@ const Home = ({ token, user_id, isAuthenticated }) => {
   const [newTodo, setNewTodo] = useState({ name: "", description: "" });
   const [editMode, setEditMode] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  useEffect(
-    () => {
-      const fetchTodos = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:8080/todos/getTodos/${user_id}`,
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          setTodos(response.data);
-        } catch (error) {
-          console.error("Error fetching todos:", error);
-        }
-      };
-      if (isAuthenticated) {
-        fetchTodos();
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/todos/getTodos/${user_id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setTodos(response.data);
+      } catch (error) {
+        console.error("Error fetching todos:", error);
       }
-    },
-    [token, user_id, isAuthenticated],
-    { setTodos }
-  );
+    };
+    if (isAuthenticated) {
+      fetchTodos();
+    }
+  }, [token, user_id, isAuthenticated, setTodos]);
 
   const handleAddTodo = async () => {
     // Check if the user is authenticated
@@ -57,6 +54,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       // Update local state immediately
       setTodos([...todos, response.data]);
       setNewTodo({ name: "", description: "" });
+      setSuccessMessage("Todo added successfully.");
     } catch (error) {
       console.error("Error adding todo:", error);
     }
@@ -68,6 +66,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTodos(todos.filter((todo) => todo.todo_id !== id));
+      setSuccessMessage("Todo deleted successfully.");
     } catch (error) {
       console.error("Error deleting todo:", error);
     }
@@ -84,6 +83,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
         }
       );
       setEditMode({ ...editMode, [id]: false });
+      setSuccessMessage("Todo updated successfully.");
     } catch (error) {
       console.error("Error updating todo:", error);
     }
@@ -107,6 +107,11 @@ const Home = ({ token, user_id, isAuthenticated }) => {
           <Link to="/login">Proceed to Login</Link>
           {/* Option to proceed to create an account */}
           <Link to="/register">Create an Account</Link>
+        </div>
+      )}
+      {successMessage && (
+        <div>
+          <p style={{ color: "green" }}>{successMessage}</p>
         </div>
       )}
       <div>

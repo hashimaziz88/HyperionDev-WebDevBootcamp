@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
 
 const Home = ({ token, user_id, isAuthenticated }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState({ name: "", description: "" });
   const [editMode, setEditMode] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(
     () => {
@@ -30,6 +32,12 @@ const Home = ({ token, user_id, isAuthenticated }) => {
   );
 
   const handleAddTodo = async () => {
+    // Check if the user is authenticated
+    if (!isAuthenticated) {
+      setErrorMessage("You need to be logged in to add a todo.");
+      return;
+    }
+
     try {
       const newTodoData = {
         todo_id: crypto.randomUUID(),
@@ -92,6 +100,15 @@ const Home = ({ token, user_id, isAuthenticated }) => {
   return (
     <div>
       <h1>Home</h1>
+      {errorMessage && (
+        <div>
+          <p style={{ color: "red" }}>{errorMessage}</p>
+          {/* Option to proceed to login */}
+          <Link to="/login">Proceed to Login</Link>
+          {/* Option to proceed to create an account */}
+          <Link to="/register">Create an Account</Link>
+        </div>
+      )}
       <div>
         <h2>To-Do List</h2>
         <input

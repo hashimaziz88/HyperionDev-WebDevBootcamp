@@ -1,6 +1,5 @@
 // backend/controllers/todosController.js
 
-
 const Todo = require("../models/todo.model");
 
 exports.create = async (req, res) => {
@@ -9,13 +8,14 @@ exports.create = async (req, res) => {
       todo_id: req.body.todo_id,
       todo_name: req.body.todo_name,
       todo_description: req.body.todo_description,
+      user_id: req.body.user_id
     });
 
     const saveTodo = await todoModel.save();
 
     // Success res
     console.log(saveTodo);
-    res.status(200).send("The todo has been added");
+    res.status(200).send(saveTodo);
   } catch (error) {
     // Error res
     console.error(error);
@@ -24,9 +24,11 @@ exports.create = async (req, res) => {
     });
   }
 };
-  
+
 exports.findAll = (req, res) => {
-  Todo.find()
+  const user_id = req.params.user_id;
+
+  Todo.find({ user_id: user_id }) // Filter todos by user_id
     .then((todos) => {
       res.send(todos);
     })

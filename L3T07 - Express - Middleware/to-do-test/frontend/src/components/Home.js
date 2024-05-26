@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Home = ({ token }) => {
+const Home = ({ token, user_id, isAuthenticated }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState({ name: "", description: "" });
   const [editMode, setEditMode] = useState({});
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/todos/getTodos", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setTodos(response.data);
-      } catch (error) {
-        console.error("Error fetching todos:", error);
+  useEffect(
+    () => {
+      const fetchTodos = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:8080/todos/getTodos/${user_id}`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          setTodos(response.data);
+        } catch (error) {
+          console.error("Error fetching todos:", error);
+        }
+      };
+      if (isAuthenticated) {
+        fetchTodos();
       }
-    };
-
-    fetchTodos();
-  }, [token]);
+    },
+    [token, user_id, isAuthenticated],
+    { setTodos }
+  );
 
   const handleAddTodo = async () => {
     try {
@@ -27,12 +35,18 @@ const Home = ({ token }) => {
         todo_id: crypto.randomUUID(),
         todo_name: newTodo.name,
         todo_description: newTodo.description,
+        user_id: user_id,
       };
 
-      const response = await axios.post("http://localhost:8080/todos/add", newTodoData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.post(
+        "http://localhost:8080/todos/add",
+        newTodoData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
+      // Update local state immediately
       setTodos([...todos, response.data]);
       setNewTodo({ name: "", description: "" });
     } catch (error) {
@@ -54,9 +68,13 @@ const Home = ({ token }) => {
   const handleUpdateTodo = async (id) => {
     try {
       const updatedTodo = todos.find((todo) => todo.todo_id === id);
-      await axios.put(`http://localhost:8080/todos/update-todo/${id}`, updatedTodo, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.put(
+        `http://localhost:8080/todos/update-todo/${id}`,
+        updatedTodo,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setEditMode({ ...editMode, [id]: false });
     } catch (error) {
       console.error("Error updating todo:", error);
@@ -64,7 +82,11 @@ const Home = ({ token }) => {
   };
 
   const handleEditChange = (id, field, value) => {
-    setTodos(todos.map((todo) => (todo.todo_id === id ? { ...todo, [field]: value } : todo)));
+    setTodos(
+      todos.map((todo) =>
+        todo.todo_id === id ? { ...todo, [field]: value } : todo
+      )
+    );
   };
 
   return (
@@ -81,7 +103,9 @@ const Home = ({ token }) => {
         <input
           type="text"
           value={newTodo.description}
-          onChange={(e) => setNewTodo({ ...newTodo, description: e.target.value })}
+          onChange={(e) =>
+            setNewTodo({ ...newTodo, description: e.target.value })
+          }
           placeholder="Enter a new todo description"
         />
         <button onClick={handleAddTodo}>Add Todo</button>
@@ -93,21 +117,49 @@ const Home = ({ token }) => {
                   <input
                     type="text"
                     value={todo.todo_name}
-                    onChange={(e) => handleEditChange(todo.todo_id, "todo_name", e.target.value)}
+                    onChange={(e) =>
+                      handleEditChange(
+                        todo.todo_id,
+                        "todo_name",
+                        e.target.value
+                      )
+                    }
                   />
                   <input
                     type="text"
                     value={todo.todo_description}
-                    onChange={(e) => handleEditChange(todo.todo_id, "todo_description", e.target.value)}
+                    onChange={(e) =>
+                      handleEditChange(
+                        todo.todo_id,
+                        "todo_description",
+                        e.target.value
+                      )
+                    }
                   />
-                  <button onClick={() => handleUpdateTodo(todo.todo_id)}>Save</button>
-                  <button onClick={() => setEditMode({ ...editMode, [todo.todo_id]: false })}>Cancel</button>
+                  <button onClick={() => handleUpdateTodo(todo.todo_id)}>
+                    Save
+                  </button>
+                  <button
+                    onClick={() =>
+                      setEditMode({ ...editMode, [todo.todo_id]: false })
+                    }
+                  >
+                    Cancel
+                  </button>
                 </>
               ) : (
                 <>
                   {todo.todo_name} - {todo.todo_description}
-                  <button onClick={() => setEditMode({ ...editMode, [todo.todo_id]: true })}>Edit</button>
-                  <button onClick={() => handleDeleteTodo(todo.todo_id)}>Delete</button>
+                  <button
+                    onClick={() =>
+                      setEditMode({ ...editMode, [todo.todo_id]: true })
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button onClick={() => handleDeleteTodo(todo.todo_id)}>
+                    Delete
+                  </button>
                 </>
               )}
             </li>

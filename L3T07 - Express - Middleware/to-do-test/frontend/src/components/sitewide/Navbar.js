@@ -1,37 +1,22 @@
-// /src/components/sitewide/Navbar.jsx
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    sessionStorage.setItem("jwt_token", "");
-    navigate("/login");
-  };
-
+const Navbar = ({ user, onLogout }) => {
   return (
-    <>
-      <h1>Todos</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          {sessionStorage.getItem("jwt_token") && (
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
-          )}
-        </ul>
-      </nav>
-      <hr />
-    </>
+    <nav>
+      <Link to="/">Home</Link>
+      {user ? (
+        <>
+          <span>Welcome, {user.username}!</span>
+          <button onClick={onLogout}>Logout</button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
+    </nav>
   );
 };
 

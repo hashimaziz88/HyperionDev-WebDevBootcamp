@@ -1,3 +1,5 @@
+// Register.js
+
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -14,7 +16,7 @@ const Register = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("http://localhost:8080/todos/register", {
         username,
         password,
       });
@@ -48,7 +50,7 @@ const Register = () => {
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Register</button>
-      </form>
+    </form>
   );
 };
 

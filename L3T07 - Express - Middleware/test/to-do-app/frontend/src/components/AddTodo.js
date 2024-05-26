@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-const AddTodo = ({ addTodo }) => {
+const AddTodo = ({ addTodo, token }) => {
   const [task, setTask] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addTodo({ task });
-    setTask("");
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/tasks",
+        { task },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      addTodo(response.data);
+      setTask("");
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
   return (

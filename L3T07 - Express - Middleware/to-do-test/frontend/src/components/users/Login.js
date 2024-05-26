@@ -13,6 +13,7 @@ const Login = ({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogout = () => {
     setToken("");
@@ -35,13 +36,21 @@ const Login = ({
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       setIsAuthenticated(true);
+      setErrorMessage(""); // Reset error message on successful login
     } catch (error) {
-      console.error("Error logging in:", error);
+      console.error("Error logging in:", error.response);
+      if (error.response.status === 401) {
+        setErrorMessage("Invalid credentials. Please try again.");
+      } else {
+        setErrorMessage("An error occurred during login. Please try again.");
+      }
     }
   };
 
   return (
     <div>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
       {isAuthenticated ? (
         <div>
           <h1>Welcome back, {user.username}!</h1>

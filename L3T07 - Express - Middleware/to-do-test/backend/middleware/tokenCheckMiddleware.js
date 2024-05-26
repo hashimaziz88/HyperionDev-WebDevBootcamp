@@ -1,6 +1,5 @@
 // backend/middleware/tokenCheckMiddleware
 
-
 const User = require("../models/user.model");
 
 // Check if user token exists in database
@@ -10,7 +9,7 @@ const tokenCheckMiddleware = (req, res, next) => {
   try {
     User.findOne({ user_jwt: token_storage }).then((user) => {
       if (!user) {
-        res.status(401).send({ message: "401 Error, user is not known" });
+        res.status(401).send("401 Error, user is not known");
       } else {
         next();
       }

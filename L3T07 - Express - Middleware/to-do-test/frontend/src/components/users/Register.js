@@ -1,4 +1,4 @@
-// Register.js
+// src/components/users/Register.js
 
 import React, { useState } from "react";
 import axios from "axios";
@@ -6,51 +6,56 @@ import axios from "axios";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
     try {
-      await axios.post("http://localhost:8080/todos/register", {
-        username,
-        password,
-      });
-      alert("Registration successful. Please login.");
-      window.location.href = "/login";
+      const response = await axios.post(
+        "http://localhost:8080/todos/register",
+        {
+          username,
+          password,
+        }
+      );
+      console.log("Registration successful:", response.data);
+      // Optionally, redirect to another page on successful registration
     } catch (error) {
-      console.error("Error registering:", error);
-      setError("Error registering user");
+      console.error("Error registering:", error.response);
+      if (error.response.status === 403) {
+        setErrorMessage("Error: Email must end with '@gmail.com'");
+      } else {
+        setErrorMessage(
+          "An error occurred during registration. Please try again."
+        );
+      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      />
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <button type="submit">Register</button>
-    </form>
+    <div>
+      <h2>Register</h2>
+      <form onSubmit={handleRegister}>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+    </div>
   );
 };
 

@@ -22,9 +22,14 @@ exports.login = async (req, res) => {
       return res.status(401).send("Invalid credentials");
     }
     const token = jwt.sign({ userId: user._id }, "your_jwt_secret");
-    res.json({ token, user: { username: user.username, _id: user._id.valueOf() } });
-  } catch (error) { 
-    res.status(500).send("Error logging in");``
+    res.json({
+      token,
+      user: { username: user.username, _id: user._id.valueOf() },
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .send("Error logging in check username or password and try again");
+    ``;
   }
 };
- 

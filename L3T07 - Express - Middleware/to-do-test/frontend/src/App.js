@@ -11,6 +11,16 @@ function App() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
+    const savedToken = localStorage.getItem("token");
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (savedToken && savedUser) {
+      setToken(savedToken);
+      setUser(savedUser);
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -20,9 +30,15 @@ function App() {
     }
   }, [token, user]);
 
+  const handleLogout = () => {
+    setToken("");
+    setUser("");
+    setIsAuthenticated(false);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} onLogout={handleLogout} />
       <Routes>
         <Route
           exact

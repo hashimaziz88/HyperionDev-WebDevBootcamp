@@ -1,0 +1,22 @@
+.no-user-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.no-user-message p {
+  margin: 0;
+}
+
+.no-user-message a {
+  color: #721c24;
+  text-decoration: underline;
+}
+
+.no-user-message a:hover {
+  color: #721c24;
+  text-decoration: none;
+}

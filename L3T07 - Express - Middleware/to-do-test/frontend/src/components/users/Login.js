@@ -1,7 +1,9 @@
-// src/components/users/Login.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import "./Login.css"; // Import the CSS file for styling
 
 const Login = ({
   setToken,
@@ -10,8 +12,6 @@ const Login = ({
   setIsAuthenticated,
   isAuthenticated,
 }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -23,13 +23,12 @@ const Login = ({
     setIsAuthenticated(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      const response = await axios.post("http://localhost:8080/todos/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8080/todos/login",
+        values
+      );
       const { token, user } = response.data;
       setToken(token);
       setUser(user);
@@ -37,9 +36,10 @@ const Login = ({
       localStorage.setItem("user", JSON.stringify(user));
       setIsAuthenticated(true);
       setErrorMessage(""); // Reset error message on successful login
+      navigate("/"); // Navigate to home or another page after successful login
     } catch (error) {
       console.error("Error logging in:", error.response);
-      if (error.response.status === 401) {
+      if (error.response && error.response.status === 401) {
         setErrorMessage("Invalid credentials. Please try again.");
       } else {
         setErrorMessage("An error occurred during login. Please try again.");
@@ -47,31 +47,83 @@ const Login = ({
     }
   };
 
-  return (
-    <div>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .email("Invalid email format")
+      .required("Username is required"),
+    password: Yup.string().required("Password is required"),
+  });
 
+  return (
+    <div className="login-container">
       {isAuthenticated ? (
-        <div>
+        <div className="welcome-container">
           <h1>Welcome back, {user.username}!</h1>
-          <button onClick={handleLogout}>Logout</button>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Login</button>
-        </form>
+        <div className="login-form-container">
+          <h2>Login</h2>
+          <p>Please enter your credentials to log in.</p>
+          {errorMessage && (
+            <p className="error-message" style={{ color: "red" }}>
+              {errorMessage}
+            </p>
+          )}
+          <Formik
+            initialValues={{ username: "", password: "" }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            <Form className="login-form">
+              <div className="form-group">
+                <label htmlFor="username">Username:</label>
+                <Field
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Enter your username"
+                />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="error-message"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <Field
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error-message"
+                />
+              </div>
+              <button type="submit" className="login-button">
+                Login
+              </button>
+            </Form>
+          </Formik>
+          <div className="login-info">
+            <h3>Login Information for Coding Mentor</h3>
+            <p>Use the following credentials to log in:</p>
+            <ul>
+              <li>
+                Username: <b>hashim@gmail.com</b>
+              </li>
+              <li>
+                Password: <b>hashim123</b>
+              </li>
+            </ul>
+          </div>
+        </div>
       )}
     </div>
   );

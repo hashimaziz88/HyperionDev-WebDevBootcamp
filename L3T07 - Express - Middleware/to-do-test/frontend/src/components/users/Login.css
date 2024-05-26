@@ -1,0 +1,87 @@
+/* src/components/users/Login.css */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.welcome-container {
+  text-align: center;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+.login-form-container {
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+}
+
+.login-info {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.login-info h3 {
+  margin-bottom: 10px;
+}
+
+.login-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.login-info li {
+  margin-bottom: 5px;
+}

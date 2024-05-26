@@ -1,0 +1,121 @@
+/* src/components/Home.css */
+/* Home.css */
+
+.todo-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.todo-box strong {
+  font-weight: bold;
+}
+
+.todo-actions {
+  margin-top: 10px;
+}
+
+.todo-actions button {
+  margin-right: 10px;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+.todo-list-container {
+  text-align: center;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group textarea {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.todo-button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-button:hover {
+  background-color: #45a049;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* src/components/Home.css */
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-item span {
+  margin-bottom: 10px; /* Add space between name and description */
+}
+
+.todo-item button {
+  margin-top: 10px; /* Add space between buttons */
+}
+
+.nav-link {
+  margin: 0 10px;
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.modal-content .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal-content .form-group textarea {
+  width: 100%;
+}

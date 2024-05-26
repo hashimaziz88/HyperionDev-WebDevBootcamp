@@ -19,9 +19,7 @@ exports.create = async (req, res) => {
   } catch (error) {
     // Error res
     console.error(error);
-    res.status(500).send({
-      message: "Some error occurred while creating the todo.",
-    });
+    res.status(500).send("Some error occurred while creating the todo.");
   }
 };
 

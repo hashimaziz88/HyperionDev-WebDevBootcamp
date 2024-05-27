@@ -1,17 +1,18 @@
-// src/components/users/Register.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import "./Auth.css";
+import { Link } from "react-router-dom"; // Import Link for navigation
+import "./Auth.css"; // Import CSS file for styling
 
 const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  // Function to handle registration
   const handleRegister = async (values, { resetForm }) => {
     try {
+      // Send registration request to the server
       const response = await axios.post(
         "http://localhost:8080/todos/register",
         {
@@ -20,11 +21,13 @@ const Register = () => {
         }
       );
       console.log("Registration successful:", response.data);
+      // Set success message and reset form
       setSuccessMessage("Registration successful. You can now log in.");
       resetForm();
     } catch (error) {
       console.error("Error registering:", error.response);
-      if (error.response.status === 403) {
+      // Handle registration errors
+      if (error.response && error.response.status === 403) {
         setErrorMessage("Error: Email must end with '@gmail.com'");
       } else {
         setErrorMessage(
@@ -34,6 +37,7 @@ const Register = () => {
     }
   };
 
+  // Form validation schema
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .email("Invalid email format")
@@ -49,6 +53,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <h2>Register</h2>
+      {/* Formik form for registration */}
       <Formik
         initialValues={{ username: "", password: "", confirmPassword: "" }}
         validationSchema={validationSchema}
@@ -56,6 +61,7 @@ const Register = () => {
       >
         {({ errors, touched }) => (
           <Form>
+            {/* Username field */}
             <div className="form-group">
               <label htmlFor="username">Username (Email):</label>
               <Field
@@ -70,6 +76,7 @@ const Register = () => {
                 className="error-message"
               />
             </div>
+            {/* Password field */}
             <div className="form-group">
               <label htmlFor="password">Password:</label>
               <Field
@@ -84,6 +91,7 @@ const Register = () => {
                 className="error-message"
               />
             </div>
+            {/* Confirm password field */}
             <div className="form-group">
               <label htmlFor="confirmPassword">Confirm Password:</label>
               <Field
@@ -102,14 +110,23 @@ const Register = () => {
                 className="error-message"
               />
             </div>
+            {/* Error and success messages */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {successMessage && (
               <p className="success-message">{successMessage}</p>
             )}
+            {/* Register button */}
             <button type="submit">Register</button>
           </Form>
         )}
       </Formik>
+      {/* Link to login page */}
+      <p>
+        Already have an account?{" "}
+        <Link to="/login" className="login-link">
+          Login here
+        </Link>
+      </p>
     </div>
   );
 };

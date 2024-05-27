@@ -1,3 +1,5 @@
+// Login.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -7,10 +9,10 @@ import "./Login.css"; // Import the CSS file for styling
 
 const Login = ({
   setToken,
-  user,
   setUser,
   setIsAuthenticated,
   isAuthenticated,
+  user,
 }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
@@ -35,8 +37,8 @@ const Login = ({
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       setIsAuthenticated(true);
-      setErrorMessage(""); // Reset error message on successful login
-      navigate("/"); // Navigate to home or another page after successful login
+      setErrorMessage("");
+      navigate("/");
     } catch (error) {
       console.error("Error logging in:", error.response);
       if (error.response && error.response.status === 401) {
@@ -60,12 +62,16 @@ const Login = ({
         <div className="welcome-container">
           <h1>Welcome back, {user.username}!</h1>
           <p>Click the button below to view your to-do list.</p>
-          <Link to="/" className="home-link">
-            Go to Home
-          </Link>
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
+          <div className="button-container">
+            <Link to="/" className="home-link">
+              View My Todos
+            </Link>
+          </div>
+          <div className="button-container">
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         </div>
       ) : (
         <div className="login-form-container">
@@ -81,39 +87,45 @@ const Login = ({
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            <Form className="login-form">
-              <div className="form-group">
-                <label htmlFor="username">Username:</label>
-                <Field
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Enter your username"
-                />
-                <ErrorMessage
-                  name="username"
-                  component="div"
-                  className="error-message"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <Field
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="error-message"
-                />
-              </div>
-              <button type="submit" className="login-button">
-                Login
-              </button>
-            </Form>
+            {({ isValid }) => (
+              <Form className="login-form">
+                <div className="form-group">
+                  <label htmlFor="username">Username:</label>
+                  <Field
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                  />
+                  <ErrorMessage
+                    name="username"
+                    component="div"
+                    className="error-message"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <Field
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="error-message"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="login-button"
+                  disabled={!isValid}
+                >
+                  Login
+                </button>
+              </Form>
+            )}
           </Formik>
           <div className="login-info">
             <h3>Login Information for Coding Mentor</h3>
@@ -127,6 +139,12 @@ const Login = ({
               </li>
             </ul>
           </div>
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="register-link">
+              Register now
+            </Link>
+          </p>
         </div>
       )}
     </div>

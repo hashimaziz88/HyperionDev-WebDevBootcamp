@@ -1,4 +1,5 @@
-/* src/components/users/Login.css */
+/* Login.css */
+
 .login-container {
   max-width: 400px;
   margin: 0 auto;
@@ -12,9 +13,11 @@
   text-align: center;
 }
 
+/* Style for logout button */
 .logout-button {
+  margin-bottom: 10px; /* Add margin to create space */
   padding: 10px 20px;
-  background-color: #f44336;
+  background-color: #f44336; /* Red color for logout button */
   color: white;
   border: none;
   border-radius: 4px;
@@ -22,7 +25,23 @@
 }
 
 .logout-button:hover {
-  background-color: #d32f2f;
+  background-color: #d32f2f; /* Darker shade of red on hover */
+}
+
+/* Style for "View My Todos" link */
+.home-link {
+  margin-top: 10px; /* Add margin to create space */
+  padding: 10px 20px;
+  background-color: #4caf50; /* Green color for "View My Todos" link */
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.home-link:hover {
+  background-color: #45a049; /* Darker shade of green on hover */
 }
 
 .login-form-container {
@@ -84,4 +103,16 @@
 
 .login-info li {
   margin-bottom: 5px;
+}
+
+.register-link {
+  color: #007bff; /* Blue color for register link */
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+.button-container {
+  margin-top: 20px; /* Add margin to create space between the buttons */
 }

@@ -51,6 +51,11 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       setTodos([...todos, response.data]);
       resetForm();
       setSuccessMessage("Todo added successfully.");
+
+      // Clear success message after 10 seconds
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
     } catch (error) {
       console.error("Error adding todo:", error);
     }
@@ -63,11 +68,15 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       });
       setTodos(todos.filter((todo) => todo.todo_id !== id));
       setSuccessMessage("Todo deleted successfully.");
+
+      // Clear success message after 10 seconds
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 10000);
     } catch (error) {
       console.error("Error deleting todo:", error);
     }
   };
-
   const handleUpdateTodo = async (id) => {
     try {
       const updatedTodo = todos.find((todo) => todo.todo_id === id);
@@ -76,6 +85,24 @@ const Home = ({ token, user_id, isAuthenticated }) => {
         !updatedTodo.todo_description.trim()
       ) {
         setErrorMessage("Todo name and description cannot be empty.");
+        // Clear error message after 10 seconds
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 5000);
+        return;
+      }
+
+      if (
+        updatedTodo.todo_name.trim().length > 140 ||
+        updatedTodo.todo_description.trim().length > 140
+      ) {
+        setErrorMessage(
+          "Todo name or description cannot exceed 140 characters."
+        );
+        // Clear error message after 10 seconds
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 7000);
         return;
       }
 
@@ -88,11 +115,15 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       );
       setEditMode({ ...editMode, [id]: false });
       setSuccessMessage("Todo updated successfully.");
+
+      // Clear success message after 10 seconds
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 7000);
     } catch (error) {
       console.error("Error updating todo:", error);
     }
   };
-
   const handleEditChange = (id, field, value) => {
     setTodos(
       todos.map((todo) =>
@@ -100,7 +131,6 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       )
     );
   };
-
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required("Todo name is required")

@@ -1,9 +1,11 @@
+// Home.jsx
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Home.css";
-import NotAuthenticated from "./NotAuthenticated"; // Import the new component
+import NotAuthenticated from "./NotAuthenticated";
 
 const Home = ({ token, user_id, isAuthenticated }) => {
   const [todos, setTodos] = useState([]);
@@ -31,7 +33,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
     }
   }, [token, user_id, isAuthenticated]);
 
-  const handleAddTodo = async (values, { resetForm }) => {
+  const handleAddTodo = async (values, actions) => {
     try {
       const newTodoData = {
         todo_id: crypto.randomUUID(),
@@ -49,15 +51,25 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       );
 
       setTodos([...todos, response.data]);
-      resetForm();
+      actions.resetForm();
       setSuccessMessage("Todo added successfully.");
-
       // Clear success message after 10 seconds
       setTimeout(() => {
         setSuccessMessage("");
       }, 5000);
     } catch (error) {
       console.error("Error adding todo:", error);
+      if (error.response) {
+        // If the server responds with an error message
+        setErrorMessage(error.response.data.message);
+      } else {
+        // If there's no response from the server
+        setErrorMessage("An error occurred while adding the todo.");
+      }
+      // Clear error message after 10 seconds
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 10000);
     }
   };
 
@@ -77,6 +89,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       console.error("Error deleting todo:", error);
     }
   };
+
   const handleUpdateTodo = async (id) => {
     try {
       const updatedTodo = todos.find((todo) => todo.todo_id === id);
@@ -124,6 +137,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       console.error("Error updating todo:", error);
     }
   };
+
   const handleEditChange = (id, field, value) => {
     setTodos(
       todos.map((todo) =>
@@ -131,6 +145,7 @@ const Home = ({ token, user_id, isAuthenticated }) => {
       )
     );
   };
+
   const validationSchema = Yup.object().shape({
     name: Yup.string()
       .required("Todo name is required")
@@ -162,24 +177,22 @@ const Home = ({ token, user_id, isAuthenticated }) => {
   };
 
   if (!isAuthenticated) {
-    return <NotAuthenticated />; // Render the NotAuthenticated component if the user is not authenticated
+    return <NotAuthenticated />;
   }
 
   return (
     <div className="home-container">
       <h1>Home</h1>
-      {errorMessage && (
-        <div>
-          <p className="error-message">{errorMessage}</p>
-        </div>
-      )}
+
       {successMessage && <p className="success-message">{successMessage}</p>}
       <div className="todo-list-container">
         <h2>To-Do List</h2>
         <Formik
           initialValues={{ name: "", description: "" }}
           validationSchema={validationSchema}
-          onSubmit={handleAddTodo}
+          onSubmit={(values, actions) => {
+            handleAddTodo(values, actions);
+          }}
         >
           {({ errors, touched }) => (
             <>
@@ -223,6 +236,11 @@ const Home = ({ token, user_id, isAuthenticated }) => {
                 <button type="submit" className="todo-button">
                   Add Todo
                 </button>
+                {errorMessage && (
+                  <div>
+                    <p className="error-message">{errorMessage}</p>
+                  </div>
+                )}
               </Form>
             </>
           )}
@@ -233,70 +251,85 @@ const Home = ({ token, user_id, isAuthenticated }) => {
             <li key={todo.todo_id} className="todo-item">
               {editMode[todo.todo_id] ? (
                 <>
-                  <div>
-                    <label htmlFor={`edit-name-${todo.todo_id}`}>
-                      Todo Name
-                    </label>
-                    <input
-                      type="text"
-                      id={`edit-name-${todo.todo_id}`}
-                      value={todo.todo_name}
-                      onChange={(e) =>
-                        handleEditChange(
-                          todo.todo_id,
-                          "todo_name",
-                          e.target.value
-                        )
-                      }
-                    />
+                  <div className="edit-mode-container">
+                    <div className="edit-mode-input">
+                      <label htmlFor={`edit-name-${todo.todo_id}`}>
+                        Todo Name:
+                      </label>
+                      <input
+                        type="text"
+                        id={`edit-name-${todo.todo_id}`}
+                        value={todo.todo_name}
+                        onChange={(e) =>
+                          handleEditChange(
+                            todo.todo_id,
+                            "todo_name",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                    <div className="edit-mode-input">
+                      <label htmlFor={`edit-description-${todo.todo_id}`}>
+                        Todo Description:
+                      </label>
+                      <input
+                        type="text"
+                        id={`edit-description-${todo.todo_id}`}
+                        value={todo.todo_description}
+                        onChange={(e) =>
+                          handleEditChange(
+                            todo.todo_id,
+                            "todo_description",
+                            e.target.value
+                          )
+                        }
+                      />
+                    </div>
+                    <div className="edit-mode-actions">
+                      <button
+                        onClick={() => handleUpdateTodo(todo.todo_id)}
+                        className="todo-button"
+                      >
+                        Save
+                      </button>
+                      <button
+                        onClick={() => handleCancelClick(todo.todo_id)}
+                        className="todo-button"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label htmlFor={`edit-description-${todo.todo_id}`}>
-                      Todo Description
-                    </label>
-                    <input
-                      type="text"
-                      id={`edit-description-${todo.todo_id}`}
-                      value={todo.todo_description}
-                      onChange={(e) =>
-                        handleEditChange(
-                          todo.todo_id,
-                          "todo_description",
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                  <button
-                    onClick={() => handleUpdateTodo(todo.todo_id)}
-                    className="todo-button"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => handleCancelClick(todo.todo_id)}
-                    className="todo-button"
-                  >
-                    Cancel
-                  </button>
                 </>
               ) : (
                 <>
-                  <span>
-                    {todo.todo_name} - {todo.todo_description}
-                  </span>
-                  <button
-                    onClick={() => handleEditClick(todo)}
-                    className="todo-button"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteTodo(todo.todo_id)}
-                    className="todo-button"
-                  >
-                    Delete
-                  </button>
+                  <div className="todo-details">
+                    <div>
+                      <strong className="todo-name">Todo Name:</strong>{" "}
+                      {todo.todo_name}
+                    </div>
+                    <div>
+                      <strong className="todo-description">
+                        Todo Description:
+                      </strong>{" "}
+                      {todo.todo_description}
+                    </div>
+                  </div>
+                  <div className="todo-buttons">
+                    <button
+                      onClick={() => handleEditClick(todo)}
+                      className="todo-button"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTodo(todo.todo_id)}
+                      className="todo-button"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </>
               )}
             </li>

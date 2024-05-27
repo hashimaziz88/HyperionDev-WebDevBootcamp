@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+### Frontend React Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application is designed to search and display media content from the iTunes API. It allows users to search for various types of media, view search results, and mark items as favorites. Below are the main components and features of the application:
 
-## Available Scripts
+### Components
 
-In the project directory, you can run:
+#### `SearchBar`
 
-### `npm start`
+- Renders a search input field and a dropdown menu to select media type.
+- Validates the search term and triggers search requests.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### `ResultsList`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Displays a list of search results with details such as title, artist name, release date, and media type.
+- Provides a button to toggle favorite status for each item.
 
-### `npm test`
+#### `FavouritesList`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Renders a list of favorite items with details and a remove button.
+- Displays the image, title, artist name, release date, and media type for each favorite item.
 
-### `npm run build`
+#### `App`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Main component that orchestrates the layout and functionality of the application.
+- Manages state for search results, favorites, and authentication token.
+- Implements functions to handle search requests, favorite toggling, and clearing search results.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Search Media**: Users can enter a search term and select a media type to search for content from the iTunes API.
+- **View Results**: Search results are displayed with details and an option to mark items as favorites.
+- **Manage Favorites**: Users can add items to favorites and remove them from the favorites list.
+- **Authentication**: Generates a JWT token for authentication with the backend server.
 
-### `npm run eject`
+### Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Unit tests are provided for the `SearchBar`, `ResultsList`, and `FavouritesList` components using the `@testing-library/react` framework.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Install Dependencies**: Run `npm install` to install required dependencies.
+2. **Run the Application**: Start the frontend server by running `npm start`.
+3. **Backend Integration**: Ensure the backend server is running and accessible for API requests.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Author
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hashim Aziz Muhammad
+For more information or inquiries, contact hashimazizm@gmail.com.

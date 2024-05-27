@@ -1,13 +1,14 @@
-const express = require('express');
-const jwt = require('jwt-simple');
-const jwtConfig = require('../config/jwtConfig');
+const express = require("express");
+const jwt = require("jwt-simple");
+const jwtConfig = require("../config/jwtConfig");
 
 const router = express.Router();
 
-router.post('/token', (req, res) => {
-    const payload = { user: 'testuser' }; // Adjust the payload as needed
-    const token = jwt.encode(payload, jwtConfig.secret);
-    res.json({ token });
+// Endpoint to generate JWT token
+router.post("/token", (req, res) => {
+  const payload = { user: "testuser" }; // Define the payload
+  const token = jwt.encode(payload, jwtConfig.secret); // Generate JWT token using secret key
+  res.json({ token }); // Send the token in response
 });
 
 module.exports = router;

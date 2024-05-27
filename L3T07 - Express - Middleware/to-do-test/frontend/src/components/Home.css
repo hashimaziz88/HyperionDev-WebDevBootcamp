@@ -1,4 +1,3 @@
-/* src/components/Home.css */
 /* Home.css */
 
 .todo-box {
@@ -58,10 +57,17 @@
   margin-bottom: 5px;
 }
 
-.form-group textarea {
+.form-group input {
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
 }
 
 .todo-button {
@@ -82,8 +88,6 @@
   padding: 0;
 }
 
-/* src/components/Home.css */
-
 .todo-item {
   display: flex;
   flex-direction: column;
@@ -99,23 +103,39 @@
 .todo-item button {
   margin-top: 10px; /* Add space between buttons */
 }
+/* Home.css */
 
-.nav-link {
-  margin: 0 10px;
-  color: #4caf50;
-  text-decoration: none;
+.edit-mode-container {
+  margin-bottom: 10px;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
+.edit-mode-input {
+  margin-bottom: 10px;
 }
 
-.modal-content .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.modal-content .form-group textarea {
+.edit-mode-input input[type="text"] {
   width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-mode-actions button {
+  margin-right: 5px;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-mode-actions button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
 }

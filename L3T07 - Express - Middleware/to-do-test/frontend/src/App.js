@@ -1,9 +1,12 @@
+// App.js
+
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/sitewide/Navbar";
 import Login from "./components/users/Login";
 import Register from "./components/users/Register";
 import Home from "./components/Home";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -64,6 +67,8 @@ function App() {
             />
           }
         />
+        <Route path="*" element={<NotFound />} />{" "}
+        {/* Catch-all route for 404 */}
       </Routes>
     </>
   );

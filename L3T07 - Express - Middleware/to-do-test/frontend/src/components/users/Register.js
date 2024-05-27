@@ -2,24 +2,26 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import "./Auth.css";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  const handleRegister = async (values, { resetForm }) => {
     try {
       const response = await axios.post(
         "http://localhost:8080/todos/register",
         {
-          username,
-          password,
+          username: values.username,
+          password: values.password,
         }
       );
       console.log("Registration successful:", response.data);
-      // Optionally, redirect to another page on successful registration
+      setSuccessMessage("Registration successful. You can now log in.");
+      resetForm();
     } catch (error) {
       console.error("Error registering:", error.response);
       if (error.response.status === 403) {
@@ -32,29 +34,82 @@ const Register = () => {
     }
   };
 
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .email("Invalid email format")
+      .required("Username is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Confirm password is required"),
+  });
+
   return (
-    <div>
+    <div className="auth-container">
       <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <Formik
+        initialValues={{ username: "", password: "", confirmPassword: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleRegister}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <div className="form-group">
+              <label htmlFor="username">Username (Email):</label>
+              <Field
+                type="text"
+                id="username"
+                name="username"
+                className={errors.username && touched.username ? "error" : ""}
+              />
+              <ErrorMessage
+                name="username"
+                component="div"
+                className="error-message"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <Field
+                type="password"
+                id="password"
+                name="password"
+                className={errors.password && touched.password ? "error" : ""}
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="error-message"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <Field
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                className={
+                  errors.confirmPassword && touched.confirmPassword
+                    ? "error"
+                    : ""
+                }
+              />
+              <ErrorMessage
+                name="confirmPassword"
+                component="div"
+                className="error-message"
+              />
+            </div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {successMessage && (
+              <p className="success-message">{successMessage}</p>
+            )}
+            <button type="submit">Register</button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

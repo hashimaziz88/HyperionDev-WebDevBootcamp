@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Login.css"; // Import the CSS file for styling
@@ -59,6 +59,10 @@ const Login = ({
       {isAuthenticated ? (
         <div className="welcome-container">
           <h1>Welcome back, {user.username}!</h1>
+          <p>Click the button below to view your to-do list.</p>
+          <Link to="/" className="home-link">
+            Go to Home
+          </Link>
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>

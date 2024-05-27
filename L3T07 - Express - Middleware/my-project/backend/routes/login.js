@@ -1,11 +1,11 @@
-// backend/routes/login.js
-
 const express = require("express");
-// Express Router used to interact with CRUD functions
+// Importing Express Router to define routes
 const router = express.Router();
+// Importing the login controller function
 const { login } = require("../controllers/userController");
 
-// login & register are public facing routes
+// POST request to handle user login
+// This route is publicly accessible
 router.post("/login", login);
 
 module.exports = router;

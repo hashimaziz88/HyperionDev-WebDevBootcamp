@@ -1,7 +1,6 @@
-// backend/models/todo.model.js
-
 const mongoose = require("mongoose");
 
+// Define the schema for a todo item
 const todoSchema = mongoose.Schema({
   todo_id: {
     type: String,
@@ -21,4 +20,5 @@ const todoSchema = mongoose.Schema({
   },
 });
 
+// Export the Todo model based on the schema
 module.exports = mongoose.model("Todo", todoSchema);

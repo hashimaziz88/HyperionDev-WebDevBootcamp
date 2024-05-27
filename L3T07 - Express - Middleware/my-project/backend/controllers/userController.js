@@ -1,8 +1,8 @@
-// backend/controllers/userController.js
-
+require("dotenv").config();
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
+// Register a new user
 exports.register = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -14,6 +14,7 @@ exports.register = async (req, res) => {
   }
 };
 
+// Login user
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -21,7 +22,9 @@ exports.login = async (req, res) => {
     if (!user || !(user.password === password)) {
       return res.status(401).send("Invalid credentials");
     }
-    const token = jwt.sign({ userId: user._id }, "your_jwt_secret");
+    // Generate JWT token for authenticated user
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+    // Respond with token and user information
     res.json({
       token,
       user: { username: user.username, _id: user._id.valueOf() },
@@ -29,7 +32,6 @@ exports.login = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .send("Error logging in check username or password and try again");
-    ``;
+      .send("Error logging in, check username or password and try again");
   }
 };

@@ -1,37 +1,35 @@
-// backend/routes/getTodos.js
-
 const express = require("express");
-// Express Router used to interact with CRUD functions
+// Importing Express Router to define routes
 const router = express.Router();
+// Importing controller functions for todo operations
 const todoController = require("../controllers/todos.controller");
+// Middleware for checking JSON content type in request
 const { jsonCheckMiddleware } = require("../middleware/jsonCheckMiddleware");
+// Middleware for checking if todo payload is too large
 const {
   todoTooLargeMiddleware,
 } = require("../middleware/todoTooLargeMiddleware");
+// Middleware for checking JWT token in request
 const { tokenCheckMiddleware } = require("../middleware/tokenCheckMiddleware");
 
-// GET (default secure path)
-// http://localhost:8080/todos/secure/
-// Can't send tokens in a GET request to be verified so the most I can do
-// to stop users seeing todos is hide them at the the frontend
-// if user lacks a jwt token (although they could fake one in their browser)
+// GET request to retrieve all todos for a specific user
 router.get("/getTodos/:user_id", tokenCheckMiddleware, todoController.findAll);
 
-// POST
+// POST request to add a new todo
 router.post(
   "/add",
   [todoTooLargeMiddleware, jsonCheckMiddleware, tokenCheckMiddleware],
   todoController.create
 );
 
-// PUT
+// PUT request to update a todo by its ID
 router.put(
   "/update-todo/:todo_id",
   [todoTooLargeMiddleware, jsonCheckMiddleware, tokenCheckMiddleware],
   todoController.updateById
 );
 
-// DELETE
+// DELETE request to delete a todo by its ID
 router.delete(
   "/delete-todo/:todo_id",
   tokenCheckMiddleware,

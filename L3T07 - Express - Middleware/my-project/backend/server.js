@@ -1,8 +1,6 @@
-// backend/server.js
-// Connect to database using password in .env
+// Load environment variables from .env file
 const dotenv = require("dotenv");
 dotenv.config();
-// const password = process.env.MONGODB_PASSWORD;
 
 // Import dependencies
 const express = require("express");
@@ -15,23 +13,25 @@ const getTodos = require("./routes/getTodos");
 const login = require("./routes/login");
 const register = require("./routes/register");
 
-// Initialize middleware
+// Initialize Express application
 const app = express();
+// Enable Cross-Origin Resource Sharing (CORS)
 app.use(cors());
 
 // Global error handler middleware
-// ensures that server doesn't crash on unhandled exceptions
+// Ensures that the server doesn't crash on unhandled exceptions
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Internal Server Error");
 });
 
-// Set up port for server to listen on
+// Set up the port for the server to listen on
 const PORT = process.env.PORT || 8080;
 
-const uri = `mongodb+srv://hashim:8kb987UMZqXPIAmn@practicecluster.bweei76.mongodb.net/`;
+// MongoDB URI from environment variables
+const uri = process.env.MONGODB_URI;
 
-// Connect to db
+// Connect to the database
 mongoose.connect(uri, { useNewUrlParser: true }).then(
   () => {
     console.log("Successfully connected to the database!");
@@ -41,15 +41,19 @@ mongoose.connect(uri, { useNewUrlParser: true }).then(
   }
 );
 
-// Allow app to accept json and url encoded values
+// Allow the app to parse JSON and URL encoded values
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set up routes to be handled from: http://localhost:8080/todos
+// Set up routes
+// All routes related to todos
 app.use("/todos", getTodos);
+// Login route
 app.use("/todos", login);
+// Register route
 app.use("/todos", register);
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

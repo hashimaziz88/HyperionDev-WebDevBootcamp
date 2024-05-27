@@ -1,10 +1,9 @@
-// Login.js
-
+// Import the necessary modules and components
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik"; // Import Formik components
+import * as Yup from "yup"; // Import Yup for form validation
 import "./Login.css"; // Import the CSS file for styling
 
 const Login = ({
@@ -14,17 +13,19 @@ const Login = ({
   isAuthenticated,
   user,
 }) => {
-  const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate(); // Initialize navigate function from React Router
+  const [errorMessage, setErrorMessage] = useState(""); // State to handle error message
 
+  // Function to handle logout
   const handleLogout = () => {
-    setToken("");
-    setUser("");
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setIsAuthenticated(false);
+    setToken(""); // Clear token
+    setUser(""); // Clear user
+    localStorage.removeItem("token"); // Remove token from local storage
+    localStorage.removeItem("user"); // Remove user from local storage
+    setIsAuthenticated(false); // Set authentication status to false
   };
 
+  // Function to handle form submission
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post(
@@ -49,6 +50,7 @@ const Login = ({
     }
   };
 
+  // Validation schema for form fields
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .email("Invalid email format")
@@ -58,6 +60,7 @@ const Login = ({
 
   return (
     <div className="login-container">
+      {/* Conditional rendering based on authentication status */}
       {isAuthenticated ? (
         <div className="welcome-container">
           <h1>Welcome back, {user.username}!</h1>
@@ -77,11 +80,13 @@ const Login = ({
         <div className="login-form-container">
           <h2>Login</h2>
           <p>Please enter your credentials to log in.</p>
+          {/* Display error message if present */}
           {errorMessage && (
             <p className="error-message" style={{ color: "red" }}>
               {errorMessage}
             </p>
           )}
+          {/* Formik form for handling form inputs and validation */}
           <Formik
             initialValues={{ username: "", password: "" }}
             validationSchema={validationSchema}
@@ -127,6 +132,7 @@ const Login = ({
               </Form>
             )}
           </Formik>
+          {/* Login information */}
           <div className="login-info">
             <h3>Login Information for Coding Mentor</h3>
             <p>Use the following credentials to log in:</p>
@@ -139,6 +145,7 @@ const Login = ({
               </li>
             </ul>
           </div>
+          {/* Link to registration page */}
           <p>
             Don't have an account?{" "}
             <Link to="/register" className="register-link">

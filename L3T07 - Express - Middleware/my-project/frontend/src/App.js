@@ -1,5 +1,3 @@
-// App.js
-
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/sitewide/Navbar";
@@ -14,9 +12,11 @@ function App() {
   const [user, setUser] = useState("");
 
   useEffect(() => {
+    // Check if token and user are saved in local storage
     const savedToken = localStorage.getItem("token");
     const savedUser = JSON.parse(localStorage.getItem("user"));
     if (savedToken && savedUser) {
+      // If found, set token, user, and authentication status
       setToken(savedToken);
       setUser(savedUser);
       setIsAuthenticated(true);
@@ -24,6 +24,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Update local storage when token or user changes
     if (token) {
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
@@ -33,6 +34,7 @@ function App() {
     }
   }, [token, user]);
 
+  // Function to handle logout
   const handleLogout = () => {
     setToken("");
     setUser("");
@@ -41,7 +43,9 @@ function App() {
 
   return (
     <>
+      {/* Navbar component */}
       <Navbar user={user} onLogout={handleLogout} />
+      {/* Routes for different components */}
       <Routes>
         <Route
           exact
@@ -67,8 +71,8 @@ function App() {
             />
           }
         />
-        <Route path="*" element={<NotFound />} />{" "}
         {/* Catch-all route for 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

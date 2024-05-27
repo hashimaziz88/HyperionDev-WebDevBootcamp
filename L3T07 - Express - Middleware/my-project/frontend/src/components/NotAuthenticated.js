@@ -1,5 +1,4 @@
-// src/components/NotAuthenticated.js
-
+// Import necessary modules and components
 import React from "react";
 import { Link } from "react-router-dom";
 import "./users/Login.css"; // Import the CSS file
@@ -32,6 +31,7 @@ const NotAuthenticated = () => {
         <li>All requests must be of the JSON content type.</li>
       </ul>
       <p>Please log in or register to start managing your to-dos.</p>
+      {/* Links to login and register pages */}
       <div className="auth-links">
         <Link to="/login" className="nav-link">
           Login

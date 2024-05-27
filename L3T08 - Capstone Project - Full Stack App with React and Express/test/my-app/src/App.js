@@ -3,6 +3,7 @@ import SearchBar from "./components/SearchBar";
 import ResultsList from "./components/ResultsList";
 import FavouritesList from "./components/FavouritesList";
 import axios from "axios";
+import "./App.css"; // Import the CSS file
 
 function App() {
   const [results, setResults] = useState([]);
@@ -31,29 +32,54 @@ function App() {
         params: { term, media: mediaType },
       })
       .then((response) => {
-        setResults(response.data.results);
+        const filteredResults = response.data.results.filter(
+          (result) =>
+            !favourites.some((fav) => fav.collectionId === result.collectionId)
+        );
+        setResults(filteredResults);
       })
       .catch((error) => console.error(error));
   };
 
   const handleFavouriteToggle = (item) => {
-    setFavourites((prev) =>
-      prev.some((fav) => fav.collectionId === item.collectionId)
-        ? prev.filter((fav) => fav.collectionId !== item.collectionId)
-        : [...prev, item]
+    const isFavourited = favourites.some(
+      (fav) => fav.collectionId === item.collectionId
+    );
+
+    if (isFavourited) {
+      setFavourites((prev) =>
+        prev.filter((fav) => fav.collectionId !== item.collectionId)
+      );
+    } else {
+      setFavourites((prev) => [...prev, item]);
+    }
+
+    setResults((prev) =>
+      prev.map((result) =>
+        result.collectionId === item.collectionId
+          ? { ...result, isFavourite: !isFavourited }
+          : result
+      )
     );
   };
 
+  const handleClearResults = () => {
+    setResults([]);
+  };
+
   return (
-    <div>
-      <SearchBar onSearch={handleSearch} />
-      <ResultsList
-        results={results}
-        onFavouriteToggle={handleFavouriteToggle}
-      />
+    <div className="container">
       <FavouritesList
         favourites={favourites}
         onRemove={handleFavouriteToggle}
+      />
+      <SearchBar onSearch={handleSearch} />
+      <button className="clear-button" onClick={handleClearResults}>
+        Clear Results
+      </button>
+      <ResultsList
+        results={results}
+        onFavouriteToggle={handleFavouriteToggle}
       />
     </div>
   );

@@ -1,13 +1,17 @@
 // /src/components/SearchBar.js
+
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+// SearchBar Component: Renders a search input field and a dropdown menu to select media type.
 const SearchBar = ({ onSearch }) => {
+  // Initial values for the search form
   const initialValues = {
     term: "",
     mediaType: "all",
   };
 
+  // Validation function for form fields
   const validate = (values) => {
     const errors = {};
     if (!values.term.trim()) {
@@ -16,6 +20,7 @@ const SearchBar = ({ onSearch }) => {
     return errors;
   };
 
+  // Handle form submission
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true); // Set submitting state before making the API call
     await onSearch(values.term, values.mediaType); // Await the search action
@@ -32,12 +37,15 @@ const SearchBar = ({ onSearch }) => {
       >
         {({ isSubmitting }) => (
           <Form className="form">
+            {/* Search input field */}
             <Field type="text" name="term" placeholder="Search..." />
+            {/* Display error message if search term is empty */}
             <ErrorMessage
               name="term"
               component="div"
               className="error-message"
             />
+            {/* Media type dropdown */}
             <Field as="select" name="mediaType">
               <option value="all">All</option>
               <option value="movie">Movie</option>
@@ -49,7 +57,9 @@ const SearchBar = ({ onSearch }) => {
               <option value="software">Software</option>
               <option value="ebook">eBook</option>
             </Field>
+            {/* Submit button */}
             <button type="submit" disabled={isSubmitting}>
+              {/* Show "Searching..." text when submitting */}
               {isSubmitting ? "Searching..." : "Search"}
             </button>
           </Form>

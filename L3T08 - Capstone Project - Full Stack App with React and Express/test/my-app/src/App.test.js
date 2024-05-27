@@ -1,11 +1,17 @@
 import React from "react";
-import { render, act } from "@testing-library/react";
+import { render, screen } from "@testing-library/react"; // Import screen
 import SearchBar from "./components/SearchBar";
 
 test("renders SearchBar component", () => {
-  const { getByPlaceholderText, getByText } = render(<SearchBar />);
-  const searchInput = getByPlaceholderText("Search...");
-  const searchButton = getByText("Search");
+  render(<SearchBar />); // Render the component
+
+  // Use screen.getByPlaceholderText instead of getByPlaceholderText
+  const searchInput = screen.getByPlaceholderText("Search...");
+
+  // Use screen.getByText instead of getByText
+  const searchButton = screen.getByText("Search");
+
+  // Perform assertions
   expect(searchInput).toBeInTheDocument();
   expect(searchButton).toBeInTheDocument();
 });

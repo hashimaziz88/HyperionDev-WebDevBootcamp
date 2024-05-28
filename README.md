@@ -30,13 +30,15 @@ Welcome to my personal repository showcasing the projects and coursework complet
 
 2. **React App (Frontend)**
    - A dynamic web application using React.
-   - Utilizes React components, local state management, hooks, and routing.
+   - Utilizes React components, local state management, redux, hooks, and routing.
    - Fully functional and deployed.
 
 3. **Backend Web Development (Backend)**
    - Backend development using Express.js.
-   - Web applications with RESTful APIs.
-   - Achieved an impressive 99% average grade and Top position in class.
+   - Web applications with RESTful APIs and MongoDB
+   - Developemnt of Application Using the MERN STACK
+
+   ### Achieved an impressive 99% average grade and Top position in class.
 
 ## Get Started
 Explore the code and learn from it! You can find detailed information about each project in their respective directories.

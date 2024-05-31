@@ -43,4 +43,5 @@ Welcome to my personal repository showcasing the projects and coursework complet
 ## Get Started
 Explore the code and learn from it! You can find detailed information about each project in their respective directories.
 ![Ranking-page-001](https://github.com/hashimaziz88/HyperionDev-WebDevBootcamp/assets/78796582/b4efd053-3a8c-49ae-a9f0-c3ea8aa2898b)
+![FULL STACK WEB DEV CERTIFICATE_page-0001](https://github.com/hashimaziz88/HyperionDev-WebDevBootcamp/assets/78796582/a3d4622d-3457-462a-9004-ea741939ca57)
 

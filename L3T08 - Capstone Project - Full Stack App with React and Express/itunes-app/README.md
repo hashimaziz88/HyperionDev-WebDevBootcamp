@@ -1,5 +1,3 @@
-Sure, here's a README for the root folder with instructions for both the frontend (my-app) and the backend (backend):
-
 ---
 
 # Media Search Application

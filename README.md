@@ -16,7 +16,7 @@ Welcome to my personal repository showcasing the projects and coursework complet
 ### Level 2: Advanced Programming Concepts
 - Dive deeper into programming concepts
 - Explore algorithms and data structures
-- Enhance problem-solving skills
+- Develop Front-End applications with React and JSX/TSX.
 
 ### Level 3: Advanced Web Development with MERN Stack
 - Master the MERN (MongoDB, Express.js, React, Node.js) stack
@@ -36,7 +36,7 @@ Welcome to my personal repository showcasing the projects and coursework complet
 3. **Backend Web Development (Backend)**
    - Backend development using Express.js.
    - Web applications with RESTful APIs and MongoDB
-   - Developemnt of Application Using the MERN STACK
+   - Development of Full-Stack Applications Using the MERN STACK
 
    ### Achieved an impressive 99% average grade and Top position in class.
 

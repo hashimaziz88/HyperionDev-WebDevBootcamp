@@ -54,8 +54,8 @@ const Footer = () => {
         <div className="container" style={{ textAlign: "center" }}>
           <a href="https://www.woolworths.co.za/" target="blank">
             {" "}
-            This clone was created for hyperion dev Project from Woolworths
-            Website @ https://www.woolworths.co.za/
+            This clone was created by Hashim Aziz Muhammad Website @
+            https://www.woolworths.co.za/
           </a>
         </div>
       </footer>

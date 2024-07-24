@@ -25,3 +25,6 @@ yarn-error.log*
 # Ignore .zip files
 *.zip
 .env
+
+# Local Netlify folder
+.netlify
